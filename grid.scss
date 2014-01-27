@@ -43,15 +43,15 @@ $mg-bp-sm-width    : 480px !default;
 $mg-bp-sm-name     : 'sm';
 
 $mg-bp-md          : true;
-$mg-bp-md-width    : 768px !default;
+$mg-bp-md-width    : 640px !default;
 $mg-bp-md-name     : 'md';
 
 $mg-bp-lg          : true;
-$mg-bp-lg-width    : 960px !default;
+$mg-bp-lg-width    : 800px !default;
 $mg-bp-lg-name     : 'lg';
 
 $mg-bp-xl          : true;
-$mg-bp-xl-width    : 1200px !default;
+$mg-bp-xl-width    : 960px !default;
 $mg-bp-xl-name     : 'xl';
 
 /* 
@@ -59,7 +59,7 @@ $mg-bp-xl-name     : 'xl';
  * to target things > your largest breakpoint
  */
 $mg-bp-xxl         : false;
-$mg-bp-xxl-width   : 1600px !default;
+$mg-bp-xxl-width   : 1200px !default;
 $mg-bp-xxl-name    : 'xxl';
 
 
