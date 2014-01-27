@@ -1,4 +1,39 @@
-matriosass-grids
-================
+# Matryosass Grid
 
-A micro Sass library for infinitely nestable grids with however many columns you want.
+Derived from 'Matryoshka' (commonly referred to as a Russian nesting doll), Matryosass Grid is a micro Sass library that gives you a fractional, nestable, responsive, <em>n-</em>col grid.
+
+You tell Matryosass how many columns you want, how big of a gutter, and what breakpoints - if any - you need. 
+
+Basic 12 col with 24px margin? Small and simple 8 col? 16-col behemoth with 6 breakpoints? No probs.
+
+## Demo
+
+* [View demo](http://quagliero.github.io/matryosass-grid)
+* [View demo code](https://github.com/quagliero/matryosass-grid/tree/gh-pages)
+
+## Implementation
+
+Getting a Matryosass Grid up and running is quick and easy. Download the Sass file, define your grid variables (or not, we have defaults for that), `@import` it into your stylesheet and off you go. 
+
+```scss
+/* grid.scss */
+$mg-cols       : 12 !default;
+$mg-gutter     : 24px !default;
+```
+```scss
+/* your .scss file */
+[Your own CSS]
+
+@import "path/to/matrysass-grid";
+
+[More of your own CSS]
+
+```
+
+## Settings
+
+To come...
+
+
+
+Influenced by inuit.css, 'Don't Overthink It Grids' and Bootstrap. 
