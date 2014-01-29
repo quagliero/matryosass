@@ -1,157 +1,243 @@
-<!doctype html>
-<html lang=en>
+<html lang="en">
 <head>
-	<title>Matryosass Grid -- @quagliero</title>
+	<title>Matryosass -- responsive, nestable grid by @quagliero</title>
 	<link rel="stylesheet" href="style.min.css">
 </head>
 <body>
 	<div class="wrapper">
-		<div class="logo"></div> <span class="by-line"><strong>Matryosass</strong> Grid <br><small>by @quagliero</small></span>
-		<h1>A fractional, nestable, responsive, <em>n</em>-col grid.</h1>
+		<div class="logo"></div> <span class="by-line"><strong>Matryosass</strong> Grid <br><small>by <a href="https://twitter.com/quagliero">@quagliero</a></small></span>
+		<h1>A fractional, nestable, responsive, namespaceable grid system.</h1>
 		<div class="grid">
-			<div class="col-1-12 col-xl-2-12 col-lg-3-12 col-md-4-12 col-sm-6-12 col-xs-12-12">
-				<div class="demo-block"></div>
-			</div>
-			<div class="col-1-12 col-xl-2-12 col-lg-3-12 col-md-4-12 col-sm-6-12 col-xs-12-12">
-				<div class="demo-block"></div>
-			</div>
-			<div class="col-1-12 col-xl-2-12 col-lg-3-12 col-md-4-12 col-sm-6-12">
-				<div class="demo-block"></div>
-			</div>
-			<div class="col-1-12 col-xl-2-12 col-lg-3-12 col-md-4-12 col-sm-6-12">
-				<div class="demo-block"></div>
-			</div>
-			<div class="col-1-12 col-xl-2-12 col-lg-3-12 col-md-4-12 col-sm-6-12 col-xs-12-12">
-				<div class="demo-block"></div>
-			</div>
-			<div class="col-1-12 col-xl-2-12 col-lg-3-12 col-md-4-12 col-sm-6-12">
-				<div class="demo-block"></div>
-			</div>
-			<div class="col-1-12 col-xl-2-12 col-lg-3-12 col-md-4-12 col-sm-6-12">
-				<div class="demo-block"></div>
-			</div>
-			<div class="col-1-12 col-xl-2-12 col-lg-3-12 col-md-4-12 col-sm-6-12 col-xs-12-12">
-				<div class="demo-block"></div>
-			</div>
-			<div class="col-1-12 col-xl-2-12 col-lg-3-12 col-md-4-12 col-sm-6-12 col-xs-12-12">
-				<div class="demo-block"></div>
-			</div>
-			<div class="col-1-12 col-xl-2-12 col-lg-3-12 col-md-4-12 col-sm-6-12 col-xs-12-12">
-				<div class="demo-block"></div>
-			</div>
-			<div class="col-1-12 col-xl-2-12 col-lg-3-12 col-md-4-12 col-sm-6-12">
-				<div class="demo-block"></div>
-			</div>
-			<div class="col-1-12 col-xl-2-12 col-lg-3-12 col-md-4-12 col-sm-6-12">
-				<div class="demo-block"></div>
-			</div>
 
-			<div class="col-4-12">
-				<div class="demo-block"></div>
-			</div>
-			<div class="col-4-12">
-				<div class="demo-block"></div>
-			</div>
-			<div class="col-4-12">
-				<div class="demo-block"></div>
-			</div>
 
-			<div class="col-6-12">
+
+		<!-- eighths -->
+			<div class="col-1-8">
 				<div class="demo-block"></div>
+			</div>
+			<div class="col-1-8">
+				<div class="grid">
+					<div class="col-1-1">
+						<div class="demo-block"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-4-8">
 				<div class="grid--rev">
-					<div class="col-3-12 col-md-4-12 col-xs-12-12">
+					<div class="col-1-4 sm-1-2 xs-1-1">
 						<div class="demo-block"></div>
 					</div>
-					<div class="col-9-12 col-md-8-12 col-xs-12-12">
+					<div class="col-1-4 sm-1-2 xs-hide">
+						<div class="demo-block"></div>
+					</div>
+					<div class="col-1-4 sm-hide">
+						<div class="demo-block"></div>
+					</div>
+					<div class="col-1-4 sm-hide">
 						<div class="demo-block"></div>
 					</div>
 				</div>
 			</div>
-
-			<div class="col-6-12">
-				<div class="demo-block"></div>
+			<div class="col-1-8">
 				<div class="grid">
-					<div class="col-3-12 col-md-6-12">
-						<div class="demo-block"></div>
-					</div>
-					<div class="col-3-12 col-md-6-12">
-						<div class="demo-block"></div>
-					</div>
-					<div class="col-3-12 col-md-6-12">
-						<div class="demo-block"></div>
-					</div>
-					<div class="col-3-12 col-md-6-12">
+					<div class="col-1-1">
 						<div class="demo-block"></div>
 					</div>
 				</div>
 			</div>
-
-			<div class="col-3-12">
-				<div class="demo-block"></div>
-			</div>
-			<div class="col-3-12">
-				<div class="demo-block"></div>
-			</div>
-			<div class="col-3-12">
-				<div class="demo-block"></div>
-			</div>
-			<div class="col-3-12">
+			<div class="col-1-8">
 				<div class="demo-block"></div>
 			</div>
 
-			<div class="col-12-12">
+		<!-- sevenths -->	
+			<div class="col-1-7">
 				<div class="demo-block"></div>
+			</div>
+			<div class="col-1-7">
+				<div class="grid">
+					<div class="col-1-1">
+						<div class="demo-block"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-3-7">
 				<div class="grid--rev">
-					<div class="col-8-12">
+					<div class="col-1-3 xs-1-1">
 						<div class="demo-block"></div>
 					</div>
-					<div class="col-4-12">
+					<div class="col-1-3 xs-hide">
+						<div class="demo-block"></div>
+					</div>
+					<div class="col-1-3 xs-hide">
 						<div class="demo-block"></div>
 					</div>
 				</div>
 			</div>
 
-			<div class="col-5-12">
+			<div class="col-1-7">
 				<div class="grid">
-					<div class="col-6-12">
-						<div class="demo-block"></div>
-					</div>
-					<div class="col-6-12">
+					<div class="col-1-1">
 						<div class="demo-block"></div>
 					</div>
 				</div>
 			</div>
-			<div class="col-2-12">
-				<div class="demo-block"></div>
-			</div>
-			<div class="col-5-12">
+			<div class="col-1-7">
 				<div class="demo-block"></div>
 			</div>
 
-			<div class="col-8-12">
+		<!-- sixths -->	
+			<div class="col-1-6">
+				<div class="demo-block"></div>
+			</div>
+			<div class="col-1-6">
 				<div class="grid">
-					<div class="col-6-12 col-md-12-12">
-						<div class="grid">
-							<div class="col-7-12 col-md-12-12">
-								<div class="demo-block"></div>
-							</div>
-							<div class="col-5-12 col-md-12-12">
-								<div class="demo-block"></div>
-							</div>
-						</div>
-							</div>
-					<div class="col-6-12 col-md-12-12">
+					<div class="col-1-1">
 						<div class="demo-block"></div>
 					</div>
 				</div>
 			</div>
-			<div class="col-4-12">
+			<div class="col-2-6">
+				<div class="grid--rev">
+					<div class="col-1-2 xs-1-1">
+						<div class="demo-block"></div>
+					</div>
+					<div class="col-1-2 xs-hide">
+						<div class="demo-block"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-1-6">
+				<div class="grid">
+					<div class="col-1-1">
+						<div class="demo-block"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-1-6">
+				<div class="demo-block"></div>
+			</div>
+
+
+		<!-- fifths -->	
+			<div class="col-1-5">
+				<div class="demo-block"></div>
+			</div>
+			<div class="col-1-5">
+				<div class="grid">
+					<div class="col-1-1">
+						<div class="demo-block"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-1-5">
+				<div class="grid--rev">
+					<div class="col-1-1">
+						<div class="demo-block"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-1-5">
+				<div class="grid">
+					<div class="col-1-1">
+						<div class="demo-block"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-1-5">
+				<div class="demo-block"></div>
+			</div>
+
+		<!-- quarters -->
+			<div class="col-1-4">
+				<div class="demo-block"></div>
+			</div>
+			<div class="col-1-4 xs-1-2">
+				<div class="grid">
+					<div class="col-1-1">
+						<div class="demo-block"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-1-4 xs-hide">
+				<div class="grid">
+					<div class="col-1-1">
+						<div class="demo-block"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-1-4">
+				<div class="demo-block"></div>
+			</div>
+
+		<!-- thirds -->
+			<div class="col-1-3">
+				<div class="demo-block"></div>
+			</div>
+			<div class="col-1-3">
+				<div class="grid">
+					<div class="col-1-1">
+						<div class="demo-block"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-1-3">
+				<div class="demo-block"></div>
+			</div>
+
+		<!-- tenths and a bit of a responsive whoopa-->
+			<div class="col-1-10 xl-1-12 lg-1-8 md-1-4 sm-1-2 xs-1-1">
+				<div class="demo-block"></div>
+			</div>
+			<div class="col-1-10 xl-1-12 lg-1-8 md-1-4 sm-1-2 xs-1-1">
+				<div class="demo-block"></div>
+			</div>
+			<div class="col-1-10 xl-1-12 lg-1-8 md-1-4 sm-1-2 xs-1-1">
+				<div class="demo-block"></div>
+			</div>
+			<div class="col-1-10 xl-1-12 lg-1-8 md-1-4 sm-1-2 xs-1-1">
+				<div class="demo-block"></div>
+			</div>
+			<div class="col-1-10 xl-1-12 lg-1-8 md-1-3 sm-1-2 xs-1-1">
+				<div class="demo-block"></div>
+			</div>
+			<div class="col-1-10 xl-1-12 lg-1-8 md-1-3 sm-1-2 xs-1-1">
+				<div class="demo-block"></div>
+			</div>
+			<div class="col-1-10 xl-1-12 lg-1-8 md-1-3 sm-1-2 xs-1-1">
+				<div class="demo-block"></div>
+			</div>
+			<div class="col-1-10 xl-1-12 lg-1-8 md-1-3 sm-1-2 xs-1-1">
+				<div class="demo-block"></div>
+			</div>
+			<div class="col-1-10 xl-1-12 lg-1-2 md-1-3 sm-1-2 xs-1-1">
+				<div class="demo-block"></div>
+			</div>
+			<div class="col-1-10 xl-1-12 lg-1-2 md-1-3 sm-1-2 xs-1-1">
+				<div class="demo-block"></div>
+			</div>
+			<!-- only show these on biig screens,
+				kinda like firebox end menu items -->
+			<div class="col-1-12 lg-hide">
+				<div class="demo-block"></div>
+			</div>
+			<div class="col-1-12 lg-hide">
+				<div class="demo-block"></div>
+			</div>
+
+		<!-- whole -->
+			<div class="col-1-1">
+				<div class="demo-block"></div>
+			</div>
+			
+		<!-- half -->
+			<div class="col-1-2">
+				<div class="demo-block"></div>
+			</div>
+			<div class="col-1-2">
 				<div class="demo-block"></div>
 			</div>
 		</div>
-		<p class="key"><span class="key__icon--rev"></span> Reverse flow
-			<span class="key__icon--nest"></span> Nested
-			<span class="key__icon--nestX2"></span> Nested again</p>
 	</div>
+
 </body>
 </html>

@@ -4,97 +4,64 @@ $main: #FF3F5E;
 
 @import "grid";
 
-html, body{
-    margin: 0;
-    font-family: sans-serif;
-    color: #171717;
+html, body {
+  margin: 0;
+  font-family: sans-serif;
+  color: #171717; 
 }
 
 h1 {
-    font-size: 1.2em;
-    margin-bottom: 1em;
+  font-size: 1.2em;
+  margin-bottom: 1em; 
 }
 
-.logo{
-    background: $main;
-    color: #fff;
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0 2em 2em 0;
-    padding: 1.2em;
-    font-size: 8px;
-    text-shadow: 0 0 2px darken($main,20%);
-    box-shadow: 
-    -.5em -.5em 0 lighten($main, 20%),
-    .5em .5em 0 darken($main, 20%),
-    -1em -1em 0 lighten($main, 25%),
-    1em 1em 0 darken($main, 25%),
-    inset 0 0 0 lighten($main, 5%),
-    inset -.66em 0 0 darken($main, 5%),
-    inset -1.2em 0 0 lighten($main, 5%),
-    inset -1.2em .66em 0 darken($main, 8%),
-    inset -1.9em .66em 0 darken($main, 16%);
-}
+.logo {
+  background-color: $main;
+  color: #fff;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 2em 2em 0;
+  padding: 1.2em;
+  font-size: 8px;
+  box-shadow: -0.5em -0.5em 0 #ffa5b4, 0.5em 0.5em 0 #d80023, -1em -1em 0 #ffbec9, 1em 1em 0 #bf001f, inset 0 0 0 #ff5973, inset -0.66em 0 0 #ff2549, inset -1.2em 0 0 #ff5973, inset -1.2em 0.66em 0 #ff163c, inset -1.9em 0.66em 0 #ec0026; }
 
 .by-line {
-    display: inline-block;
-    vertical-align: middle;
-    color: #333;
+  display: inline-block;
+  vertical-align: middle;
+  color: #333; 
 }
 
-%key__icon{
-    width: 1em;
-    height: 1em;
-    display: inline-block;
-    vertical-align: top;
-    margin-right: .5em;
-    margin-left: 2em;
-    margin-bottom: .5em;
+.wrapper {
+  max-width: 1140px;
+  margin: 20px auto;
+  padding: 0 20px; 
 }
 
-.key {
-    font-size: .9em;
-    text-align: center;
-}
-.key__icon--rev {
-    @extend %key__icon;
-    background-color: #999;
-}
-.key__icon--nest {
-    @extend %key__icon;
-    background-color: $main;
-}
-.key__icon--nestX2 {
-    @extend %key__icon;
-    background-color: darken($main,40%);
-}
-
-.wrapper{
-    max-width: 1140px;
-    margin: 20px auto;
-    padding: 0 20px;
-}
 .demo-block {
-    height: 20px;
-    background: #d8d8d8;
-    margin-bottom: 5px;
+  height: 2em;
+  background: #d8d8d8;
+  margin-bottom: 12px; 
 }
 
+/* Oh hai there. Yeszir, this is bad. 
+   But it serves a purpose for a demo */
 .grid {
     .grid {
         .demo-block {
             background: $main;
         }
-        .grid {
-            .demo-block {
-                background: darken($main,40%);
-            }
+    }
+    .grid--rev {
+        .demo-block {
+            background: #888;
         }
     }
 }
-.grid--rev {
+
+.xl-1-12, 
+.lg-hide { 
     .demo-block {
-        background: #999 !important;
+        background-color: lighten($main,30%); 
     }
 }
 

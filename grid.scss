@@ -1,7 +1,7 @@
 /*!*
  *
- * matryosass grids -- @quagliero
- * Infinitely nestable grids with however many columns you want
+ * matryosass -- @quagliero
+ * Infinitely nestable grids with as many fractional widths as you like
  */
 /* ... use until CSS Grid Layouts become a reality http://www.w3.org/TR/2014/WD-css-grid-1-20140123/
  * Licensed with the 'do whatever you want with it' one.
@@ -12,55 +12,51 @@
  */
 
 /*
- * $mg-cols         -- number of columns you want available in your grid
  * $mg-gutter       -- the gap between each column
+ * $mg-fractions    -- don't think in columns, think in fractions... how many you want?
+ * $mg-bp-init      -- globally enable/disable disable responsive grid breakpoints
  * $mg-border-box   -- this grid utilises the border-box model
  * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
  */
 
-$mg-cols       : 12 !default;
-$mg-gutter     : 24px !default;
-$mg-border-box : true; /* set to false if you've declared it globally elsewhere */
+$mg-gutter      : 24px !default;
+$mg-fractions   : 12 !default;
+$mg-bp-init     : true; 
+$mg-border-box  : true;   /* set to false if you've declared it globally elsewhere */
 
 /*
- * Define some breakpoints
- *   $bp-init       -- globally enable/disable disable grid breakpoints
+ * Define some breakpoints if you wish
  *
- *   $bp-n          -- enable/disable specific breakpoint
- *   $bp-n-width    -- define a width for a breakpoint
- *   $bp-n-name     -- give that breakpoint a name
+ *   $bp-{n}          -- enable/disable specific breakpoint
+ *   $bp-{n}-width    -- define a width for a breakpoint
+ *   $bp-{n}-name     -- give that breakpoint a name
  *   http://css-tricks.com/naming-media-queries/
  */
 
-$mg-bp-init        : true; 
 
 $mg-bp-xs          : true;
-$mg-bp-xs-width    : 320px !default; 
+$mg-bp-xs-width    : 480px !default; 
 $mg-bp-xs-name     : 'xs';
 
 $mg-bp-sm          : true;
-$mg-bp-sm-width    : 480px !default;
+$mg-bp-sm-width    : 640px !default;
 $mg-bp-sm-name     : 'sm';
 
 $mg-bp-md          : true;
-$mg-bp-md-width    : 640px !default;
+$mg-bp-md-width    : 800px !default;
 $mg-bp-md-name     : 'md';
 
 $mg-bp-lg          : true;
-$mg-bp-lg-width    : 800px !default;
+$mg-bp-lg-width    : 1024px !default;
 $mg-bp-lg-name     : 'lg';
-
-$mg-bp-xl          : true;
-$mg-bp-xl-width    : 960px !default;
-$mg-bp-xl-name     : 'xl';
 
 /* 
  * This last one is used as a MIN-width media query
  * to target things > your largest breakpoint
  */
-$mg-bp-xxl         : false;
-$mg-bp-xxl-width   : 1200px !default;
-$mg-bp-xxl-name    : 'xxl';
+$mg-bp-xl         : true;
+$mg-bp-xl-width   : $mg-bp-lg-width + 1 !default;
+$mg-bp-xl-name    : 'xl';
 
 
 /*
@@ -71,13 +67,12 @@ $mg-bp-xxl-name    : 'xxl';
 
 
 /*
- * Take our variables and make
- * our grid with columns (and breakpoints)
+ * Build our grid with columns (and breakpoints)
  */
-@mixin grid($mg-cols, $mg-gutter) {
+@mixin grid() {
     /*
-     * Define the .grid to wrap our items in
-     * it offsets the gutter with a negative margin so 
+     * Define the .grid to wrap our items in and
+     * offset the gutter with a negative margin so 
      * we don't need to use .last 
      */
     .grid {
@@ -88,20 +83,24 @@ $mg-bp-xxl-name    : 'xxl';
             display: table;
             clear: both;
         }
+        /* if you want to nest, or reverse, outside of a .col */
+        > .grid {
+            margin-left: 0;
+        }
     }
     /* Reverse the flow, useful for content ordering */
     .grid--rev {
         @extend .grid;
-        [class*='col-'] {
+        [class*=col-] {
             float: right;
         }
     }
 
     /*
-     * Columns always prefixed with col-, 
+     * Columns always have a .grid-col class 
      * so give them a base style
      */
-    [class*='col-'] {
+     [class*=col-] {
         float: left;
         min-height: 1px; /* prevent collapsing columns */
         padding-left: $mg-gutter;
@@ -113,45 +112,43 @@ $mg-bp-xxl-name    : 'xxl';
     }
 
     /*
-     * Loop through the number of $cols we have
-     * to build our base grid
+     * Go get our column widths
+     * to build our base grid with .grid__col- prefix
      */
 
-    @include cols();
+    @include cols(col);
 
     /*
      * Have we enabled $bp-init for some breakpoint action?
      */
      @if $mg-bp-init {
-        /* Then let's get busy breakin' */
-        @if $mg-bp-xxl {
-            @media (min-width: $mg-bp-xxl-width) {
-                @include cols($mg-bp-xxl-name + '-');
-            }
-        }
+        /* 
+         * Then let's get busy breakin' and create
+         * some suepr awsum responsive grid widths
+         */
         @if $mg-bp-xl {
-            @media (max-width: $mg-bp-xl-width) {
-                @include cols($mg-bp-xl-name + '-');
+            @media (min-width: $mg-bp-xl-width) {
+                @include cols($mg-bp-xl-name);
             }
         }
         @if $mg-bp-lg {
             @media (max-width: $mg-bp-lg-width) {
-                @include cols($mg-bp-lg-name + '-');
+                @include cols($mg-bp-lg-name);
             }
         }
         @if $mg-bp-md {
             @media (max-width: $mg-bp-md-width) {
-                @include cols($mg-bp-md-name + '-');
+                @include cols($mg-bp-md-name);
             }
         }
         @if $mg-bp-sm {
             @media (max-width: $mg-bp-sm-width) {
-                @include cols($mg-bp-sm-name + '-');
+                @include cols($mg-bp-sm-name);
             }
         }
         @if $mg-bp-xs {
             @media (max-width: $mg-bp-xs-width) {
-                @include cols($mg-bp-xs-name + '-');
+                @include cols($mg-bp-xs-name);
             }
         }
      }
@@ -161,23 +158,37 @@ $mg-bp-xxl-name    : 'xxl';
 
 /*
  * Function to handle the building of columns
- * set fractional based names for them e.g.
- * .col-1-10, .col-6-12, .col-9-24
+ * Set verbose fractional based names for them e.g.
+ * .one-half, .xs-three-eigths, .lg-four-fifths
  */
 @mixin cols($breakpoint : null) {
-
-    @for $i from 1 through $mg-cols {
-        .col-#{$breakpoint}#{$i}-#{$mg-cols} {
-            width: (($i / $mg-cols) * 100%);
+        
+    @for $i from 1 through $mg-fractions {
+        @for $j from 1 through $i {
+            @if $i != $j && $i != 1 {
+                .#{$breakpoint}-#{$j}-#{$i} {
+                    width: (($j / $i) * 100%);
+                }
+            }
         }
     }
-
+    /* a helpful class to hide columns
+     * e.g, .xl-hide, .md-hide
+     */
+    .#{$breakpoint}-hide {
+        visibility: hidden;
+        overflow: hidden;
+        width: 0;
+        height: 0;
+        padding: 0;
+    }
 }
+
 
 /* 
  * Build our grid, yo 
  */
-@include grid($mg-cols, $mg-gutter);
+@include grid();
 
 
 /* Fin. */
