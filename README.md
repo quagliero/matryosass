@@ -2,9 +2,7 @@
 
 Derived from 'Matryoshka' (commonly referred to as a Russian nesting doll), Matryosass Grid is a micro Sass library that gives you a fractional, nestable, responsive, <em>n-</em>col grid.
 
-You tell Matryosass how many columns you want, how big of a gutter, and what breakpoints - if any - you need. 
-
-Basic 12 col with 24px margin? Small and simple 8 col? 16-col behemoth with 6 breakpoints? No probs.
+You tell Matryosass how many fractional widths you want, how big of a gutter, and what breakpoints - if any - you need. 
 
 ## Demo
 
