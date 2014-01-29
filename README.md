@@ -34,6 +34,8 @@ $mg-gutter     : 24px !default;
 
 To come...
 
+## Nesting, reversing, break-pointin'
 
+To come...
 
 Influenced by inuit.css, 'Don't Overthink It Grids' and Bootstrap. 
