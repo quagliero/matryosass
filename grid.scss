@@ -158,8 +158,8 @@ $mg-bp-xl-name    : 'xl';
 
 /*
  * Function to handle the building of columns
- * Set verbose fractional based names for them e.g.
- * .one-half, .xs-three-eigths, .lg-four-fifths
+ * Set fractional based names for them e.g.
+ * .col-1-2, .xs-3-8, .lg-4-5
  */
 @mixin cols($breakpoint : null) {
         
