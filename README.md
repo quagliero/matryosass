@@ -15,7 +15,7 @@ Getting a Matryosass Grid up and running is quick and easy. Download the Sass fi
 
 ```scss
 /* grid.scss */
-$mg-cols       : 12 !default;
+$mg-fractions  : 12 !default;
 $mg-gutter     : 24px !default;
 ```
 ```scss
