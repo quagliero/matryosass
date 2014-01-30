@@ -25,9 +25,9 @@ $mg-border-box  : true;   /* set to false if you've declared it globally elsewhe
 /*
  * Define your breakpoints
  *
- *   $bp-{n}          -- enable/disable specific breakpoint
- *   $bp-{n}-width    -- define a width for a breakpoint
- *   $bp-{n}-name     -- give that breakpoint a name
+ *   $mg-bp-{n}          -- enable/disable specific breakpoint
+ *   $mg-bp-{n}-width    -- define a width for a breakpoint
+ *   $mg-bp-{n}-name     -- give that breakpoint a name
  *   http://css-tricks.com/naming-media-queries/
  */
 
@@ -84,10 +84,23 @@ $mg-bp-xl-name    : 'xl';
         > .grid {
             margin-left: 0;
         }
+    
     }
+
+    /* No gutters, just a whole lot of grid */
+    .grid--flush {
+        @extend .grid;
+        margin-left: 0;
+
+        [class*=col-] {
+            padding-left: 0;
+        }
+    }
+
     /* Reverse the flow, useful for content ordering */
     .grid--rev {
         @extend .grid;
+        
         [class*=col-] {
             float: right;
         }

@@ -1,44 +1,62 @@
 @charset "utf-8";
 
-$main: #FF3F5E;
+$pink: #FF3F5E;
+$text: #171717;
 
 @import "grid";
 
+/* default stuff */
 html, body {
   margin: 0;
   font-family: sans-serif;
-  color: #171717; 
+  color: $text; 
+}
+a {
+  color: #ffcc00;
+  text-decoration: none;
 }
 
+/* Page title */
 h1 {
   font-size: 1.2em;
   margin-bottom: 1em; 
+
   @include media(xl) {
     font-size: 2em;
   }
   @include media(lg) {
-    font-size: 1.55em;
+    font-size: 1.7em;
   }
   @include media(md) {
-    font-size: 1.2em;
+    font-size: 1.4em;
   }
   @include media(sm) {
-    font-size: .95em;
+    font-size: 1em;
   }
   @include media(xs) {
     font-size: .8em;
   }
 }
 
+/* Logo & by line and quagliero */
 .logo {
-  background-color: $main;
+  background-color: $pink;
   color: #fff;
   display: inline-block;
   vertical-align: middle;
   margin: 0 2em 2em 0;
   padding: 1.2em;
-  font-size: 8px;
-  box-shadow: -0.5em -0.5em 0 #ffa5b4, 0.5em 0.5em 0 #d80023, -1em -1em 0 #ffbec9, 1em 1em 0 #bf001f, inset 0 0 0 #ff5973, inset -0.66em 0 0 #ff2549, inset -1.2em 0 0 #ff5973, inset -1.2em 0.66em 0 #ff163c, inset -1.9em 0.66em 0 #ec0026; }
+  font-size: 10px;
+  box-shadow: -0.5em -0.5em 0 lighten($pink,20%), 
+  0.5em 0.5em 0 darken($pink,20%), 
+  -1em -1em 0 lighten($pink,30%), 
+  1em 1em 0 darken($pink,30%), 
+  inset 0 0 0 lighten($pink,8%), 
+  inset -0.66em 0 0 darken($pink, 8%), 
+  inset -1.2em 0 0 lighten($pink,8%), 
+  inset -1.2em 0.66em 0 darken($pink,12%), 
+  inset -1.9em 0.66em 0 darken($pink,16%); 
+}
 
 .by-line {
   display: inline-block;
@@ -46,6 +64,11 @@ h1 {
   color: #333; 
 }
 
+.author {
+  width: 60px;
+  vertical-align: middle;
+}
+/* Grid wrapper stuff */
 .wrapper {
   max-width: 1140px;
   margin: 20px auto;
@@ -63,7 +86,7 @@ h1 {
 .grid {
     .grid {
         .demo-block {
-            background: $main;
+            background: $pink;
         }
     }
     .grid--rev {
@@ -71,12 +94,19 @@ h1 {
             background: #888;
         }
     }
+    .grid--flush {
+        > div:nth-child(odd) {
+          .demo-block {
+              background: darken($pink,35%);
+          }
+        }
+    }
 }
 
 .xl-1-12, 
 .lg-hide { 
     .demo-block {
-        background-color: lighten($main,30%); 
+        background-color: lighten($pink,30%); 
     }
 }
 
