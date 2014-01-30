@@ -1,6 +1,6 @@
-# Matryosass Grid
+# Matryosass
 
-Derived from 'Matryoshka' (a Russian nesting doll), Matryosass Grid is a micro Sass library that gives you a fractional, nestable, responsive, <em>n-</em>col grid.
+Derived from 'Matryoshka' (a Russian nesting doll), Matryosass is a micro Sass library that gives you a fractional, nestable, responsive, reversible, em>n-</em>col grid with custom namespaced media queries.
 
 You tell Matryosass how many fractional widths you want, how big of a gutter, and what breakpoints - if any - you need. 
 
