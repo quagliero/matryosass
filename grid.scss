@@ -113,7 +113,7 @@ $mg-bp-xl-name    : 'xl';
      * to build our base grid with .grid__col- prefix
      */
 
-    @include cols(col);
+    @include cols();
 
         /* 
          * Let's get busy break-pointin' and create
@@ -153,11 +153,11 @@ $mg-bp-xl-name    : 'xl';
  * Set fractional based names for them e.g.
  * .col-1-2, .xs-3-8, .lg-4-5
  */
-@mixin cols($namespace : null) {
+@mixin cols($namespace : 'col') {
         
     @for $i from 1 through $mg-fractions {
         @for $j from 1 through $i {
-            @if $i != $j && $i != 1 {
+            @if $i != $j or $i == 1{
                 .#{$namespace}-#{$j}-#{$i} {
                     width: (($j / $i) * 100%);
                 }
@@ -176,6 +176,39 @@ $mg-bp-xl-name    : 'xl';
     }
 }
 
+
+/*
+ * Let us use those breakpoints elsewhere...
+ * @if/@else if -- Try and match the media-query namespace and assign relevant widths
+ */
+
+@mixin media($namespace) {
+    @if $namespace == $mb-xl-name {
+        @media (min-width: $mb-xl-width) {
+            @content;
+        }
+    }
+    @else if $namespace == $mb-lg-name {
+        @media (max-width: $mb-lg-width) {
+            @content;
+        }
+    }
+    @else if $namespace == $mb-md-name {
+        @media (max-width: $mb-md-width) {
+            @content;
+        }
+    }
+    @else if $namespace == $mb-sm-name {
+        @media (max-width: $mb-sm-width) {
+            @content;
+        }
+    }
+    @else if $namespace == $mb-xs-name {
+        @media (max-width: $mb-xs-width) {
+            @content;
+        }
+    }
+}
 
 /* 
  * Build our grid, yo 
