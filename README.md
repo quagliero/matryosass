@@ -22,7 +22,7 @@ $mg-gutter     : 24px !default;
 /* your .scss file */
 [Your own CSS]
 
-@import "path/to/matrysass-grid";
+@import "path/to/matryosass-grid";
 
 [More of your own CSS]
 
