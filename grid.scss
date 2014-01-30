@@ -183,28 +183,28 @@ $mg-bp-xl-name    : 'xl';
  */
 
 @mixin media($namespace) {
-    @if $namespace == $mb-xl-name {
-        @media (min-width: $mb-xl-width) {
+    @if $namespace == $mg-bp-xl-name {
+        @media (min-width: $mg-bp-xl-width) {
             @content;
         }
     }
-    @else if $namespace == $mb-lg-name {
-        @media (max-width: $mb-lg-width) {
+    @else if $namespace == $mg-bp-lg-name {
+        @media (max-width: $mg-bp-lg-width) {
             @content;
         }
     }
-    @else if $namespace == $mb-md-name {
-        @media (max-width: $mb-md-width) {
+    @else if $namespace == $mg-bp-md-name {
+        @media (max-width: $mg-bp-md-width) {
             @content;
         }
     }
-    @else if $namespace == $mb-sm-name {
-        @media (max-width: $mb-sm-width) {
+    @else if $namespace == $mg-bp-sm-name {
+        @media (max-width: $mg-bp-sm-width) {
             @content;
         }
     }
-    @else if $namespace == $mb-xs-name {
-        @media (max-width: $mb-xs-width) {
+    @else if $namespace == $mg-bp-xs-name {
+        @media (max-width: $mg-bp-xs-width) {
             @content;
         }
     }
