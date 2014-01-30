@@ -92,7 +92,7 @@ $mg-bp-xl-name    : 'xl';
         @extend .grid;
         margin-left: 0;
 
-        [class*=col-] {
+        [class*='col-'] {
             padding-left: 0;
         }
     }
@@ -101,7 +101,7 @@ $mg-bp-xl-name    : 'xl';
     .grid--rev {
         @extend .grid;
         
-        [class*=col-] {
+        [class*='col-'] {
             float: right;
         }
     }
@@ -110,7 +110,7 @@ $mg-bp-xl-name    : 'xl';
      * Columns always have a .grid-col class 
      * so give them a base style
      */
-     [class*=col-] {
+     [class*='col-'] {
         float: left;
         min-height: 1px; /* prevent collapsing columns */
         padding-left: $mg-gutter;
