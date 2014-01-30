@@ -14,25 +14,22 @@
 /*
  * $mg-gutter       -- the gap between each column
  * $mg-fractions    -- don't think in columns, think in fractions... how many you want?
- * $mg-bp-init      -- globally enable/disable disable responsive grid breakpoints
  * $mg-border-box   -- this grid utilises the border-box model
  * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
  */
 
 $mg-gutter      : 24px !default;
 $mg-fractions   : 12 !default;
-$mg-bp-init     : true; 
 $mg-border-box  : true;   /* set to false if you've declared it globally elsewhere */
 
 /*
- * Define some breakpoints if you wish
+ * Define your breakpoints
  *
  *   $bp-{n}          -- enable/disable specific breakpoint
  *   $bp-{n}-width    -- define a width for a breakpoint
  *   $bp-{n}-name     -- give that breakpoint a name
  *   http://css-tricks.com/naming-media-queries/
  */
-
 
 $mg-bp-xs          : true;
 $mg-bp-xs-width    : 480px !default; 
@@ -116,15 +113,11 @@ $mg-bp-xl-name    : 'xl';
      * to build our base grid with .grid__col- prefix
      */
 
-    @include cols(col);
+    @include cols();
 
-    /*
-     * Have we enabled $bp-init for some breakpoint action?
-     */
-     @if $mg-bp-init {
         /* 
-         * Then let's get busy breakin' and create
-         * some suepr awsum responsive grid widths
+         * Let's get busy break-pointin' and create
+         * some suepr awsum namespaced responsive grid widths
          */
         @if $mg-bp-xl {
             @media (min-width: $mg-bp-xl-width) {
@@ -151,31 +144,30 @@ $mg-bp-xl-name    : 'xl';
                 @include cols($mg-bp-xs-name);
             }
         }
-     }
 
 }
 
 
 /*
  * Function to handle the building of columns
- * Set verbose fractional based names for them e.g.
- * .one-half, .xs-three-eigths, .lg-four-fifths
+ * Set fractional based names for them e.g.
+ * .col-1-2, .xs-3-8, .lg-4-5
  */
-@mixin cols($breakpoint : null) {
+@mixin cols($namespace : 'col') {
         
     @for $i from 1 through $mg-fractions {
         @for $j from 1 through $i {
-            @if $i != $j && $i != 1 {
-                .#{$breakpoint}-#{$j}-#{$i} {
+            @if $i != $j or $i == 1{
+                .#{$namespace}-#{$j}-#{$i} {
                     width: (($j / $i) * 100%);
                 }
             }
         }
     }
     /* a helpful class to hide columns
-     * e.g, .xl-hide, .md-hide
+     * e.g, .col-hide, .xl-hide, .md-hide
      */
-    .#{$breakpoint}-hide {
+    .#{$namespace}-hide {
         visibility: hidden;
         overflow: hidden;
         width: 0;
@@ -184,6 +176,39 @@ $mg-bp-xl-name    : 'xl';
     }
 }
 
+
+/*
+ * Let us use those breakpoints elsewhere...
+ * @if/@else if -- Try and match the media-query namespace and assign relevant widths
+ */
+
+@mixin media($namespace) {
+    @if $namespace == $mg-bp-xl-name {
+        @media (min-width: $mg-bp-xl-width) {
+            @content;
+        }
+    }
+    @else if $namespace == $mg-bp-lg-name {
+        @media (max-width: $mg-bp-lg-width) {
+            @content;
+        }
+    }
+    @else if $namespace == $mg-bp-md-name {
+        @media (max-width: $mg-bp-md-width) {
+            @content;
+        }
+    }
+    @else if $namespace == $mg-bp-sm-name {
+        @media (max-width: $mg-bp-sm-width) {
+            @content;
+        }
+    }
+    @else if $namespace == $mg-bp-xs-name {
+        @media (max-width: $mg-bp-xs-width) {
+            @content;
+        }
+    }
+}
 
 /* 
  * Build our grid, yo 

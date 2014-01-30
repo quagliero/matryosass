@@ -13,6 +13,21 @@ html, body {
 h1 {
   font-size: 1.2em;
   margin-bottom: 1em; 
+  @include media(xl) {
+    font-size: 2em;
+  }
+  @include media(lg) {
+    font-size: 1.55em;
+  }
+  @include media(md) {
+    font-size: 1.2em;
+  }
+  @include media(sm) {
+    font-size: .95em;
+  }
+  @include media(xs) {
+    font-size: .8em;
+  }
 }
 
 .logo {
