@@ -173,7 +173,7 @@ $mg-bp-xl-name    : 'xl';
         @for $j from 1 through $i {
             @if $i != $j or $i == 1{
                 .#{$namespace}-#{$j}-#{$i} {
-                    width: (($j / $i) * 100%);
+                    width: percentage($j / $i);
                 }
             }
         }
