@@ -45,7 +45,7 @@ $mg-fractions: 12;
 ```
 <hr>
 ### $mg-gutter
-Nothing crazy here, just the distance between each column. I'd recommend matching it to your base line height for some horizontal and vertical rhythm. Vertical rhythm? There are things like <a href="http://github.com/csswizardry/typecsset">Typcsset</a> which are great at this.
+Nothing crazy here, just the distance between each column. I'd recommend matching it to your base line height for some horizontal and vertical rhythm. Vertical rhythm? There are things like [Typcsset](http://github.com/csswizardry/typecsset) which are great at this.
 ```scss
 // @int + unit
 $mg-gutter: 24px;
@@ -79,13 +79,13 @@ These will be the names you prefix to your column with modifiers, and also when 
 $mg-bp-xs-name     : 'xs';
 ```
 
-## Reversing, nesting, break-pointin'
+## Grids: nesting, --rev, --flush
 
 To start with you'll need to wrap your grid in a class of `.grid`, this has a negative left margin (the same width as the column gutter) so you don't need to worry about any `.last` or `:nth-of-type:last` shenanigans. 
 
 It is imperative you do not add any margins, widths or padding to the `.col` items themselves. They form the structure of your site, and you add content within them. To paraphrase Harry Roberts, "the grid and it's columns are the shelves on which you place your things."
 
-A simple two-column layout with a 40%:60% split:
+A simple two-column layout with a 40%:60% split, which collapses to full width at the smallest breakpoint:
 ```html
 <div class="grid">
   <div class="col-2-5">
@@ -98,7 +98,7 @@ A simple two-column layout with a 40%:60% split:
 ```
 Now on a mobile device we probably want that display order to be reversed, so we'd use the `.grid--rev` class instead of `.grid`, which will float our `.col-` items to the right.
 
-So what if we want a block of modules underneath the blog post, but within the same column? We nest. This is when fractional widths become so awesome, because we still have access to our whole range of widths - but within a new container! So let's have 3 evenly spaced out modules that are 1/3 of the width of the blog post column:
+So what if we want a block of modules underneath the blog post, but within the same column? We nest. This is when fractional widths become so awesome, because we still have access to our whole range of percentages - but within a new container! So let's have 3 evenly spaced out modules that are 1/3 of the width of the blog post column:
 ```html
 ...
   <div class="col-3-5">
@@ -119,3 +119,56 @@ So what if we want a block of modules underneath the blog post, but within the s
   </div>
 ...
 ```
+
+But what if we don't want the modules to have any space between them? We make things flush. Using `.grid--flush` instead of `.grid` removes all spacing between `.col-`s.
+
+## Cols: widths, media-queries, -hide
+All grid columns require the `col-` class as this gives it the default styles it needs to behave like a column. We then suffix it with its default width, e.g. `<div class="col-1-3">`. 
+
+You can then manipulate the widths of columns across all five breakpoints by prefixing the fractional width with the namespace you gave to the media-query. `<div class="col-8-12 lg-3-5 md-1-2 sm-1-2 xs-1-1">`.
+
+And depending on your defined widths and names, this will behave something like:
+```css
+
+.col-3-4 {
+  width: 75%;
+}
+@media (max-width: 1024px) {
+  .lg-2-3 {
+    width: 66.6666%; 
+  }
+}
+@media (max-width: 800px) {
+  .md-3-5 {
+    width: 60%; 
+  }
+}
+@media (max-width: 640px) {
+  .sm-1-2 {
+    width: 50%; 
+  }
+}
+@media (max-width: 640px) {
+  .xs-1-1 {
+    width: 100%; 
+  }
+}
+.
+```
+
+
+You can do some pretty powerful stuff with columns and media queries. This is a snippet taken from the [demo](http://quagliero.github.io/matryosass), specifically the light pink row. 
+```html
+			<div class="col-1-10 xl-1-12 lg-1-2 md-1-3 sm-1-2">
+				<div class="demo-block"></div>
+			</div>
+			<!-- only show these on biig screens,
+				kinda like firebox end menu items -->
+			<div class="col-1-12 lg-hide">
+				<div class="demo-block"></div>
+			</div>
+			<div class="col-1-12 lg-hide">
+				<div class="demo-block"></div>
+			</div>
+```
+We set the width of the last two items to one-twelfth, and hide them on our `lg` breakpoint (the largest max-width one we set). So as soon we go past this point these are now visible. Anything past our `lg` breakpoint is in our `xl` media-query territory, where you'll see the columns above are set to `.xl-1-12`.
