@@ -92,15 +92,26 @@ It is imperative you do not add any margins, widths or padding to the `.col` ite
 A simple two-column layout with a 40%:60% split, which collapses to full width at the smallest breakpoint:
 ```html
 <div class="grid">
-  <div class="col-2-5">
+  <div class="col-2-5 xs-1-1">
     <!-- archive -->
   </div>
-  <div class="col-3-5">
+  <div class="col-3-5 xs-1-1">
      <!-- blog post -->
   </div>
 </div>
 ```
-Now on a mobile device we probably want that display order to be reversed, so we'd use the `.grid--rev` class instead of `.grid`, which will float our `.col-` items to the right.
+Now on a mobile device we probably want that display order to be reversed, so we'd use the `.grid--rev` class instead of `.grid`, which will float our `.col-` items to the right:
+```html
+<div class="grid--rev">
+  <div class="col-2-5 xs-1-1">
+    <!-- archive -->
+  </div>
+  <div class="col-3-5 xs-1-1">
+     <!-- I'm down here, but I will appear above the archive! -->
+  </div>
+</div>
+```
+
 
 So what if we want a block of modules underneath the blog post, but within the same column? We nest. This is when fractional widths become so awesome, because we still have access to our whole range of percentages - but within a new container! So let's have 3 evenly spaced out modules that are 1/3 of the width of the blog post column:
 ```html
