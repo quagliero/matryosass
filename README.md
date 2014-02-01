@@ -189,7 +189,7 @@ You can do some pretty powerful stuff with columns and media queries. This is a 
 We set the width of the last two items to one-twelfth, and hide them on our `lg` breakpoint (the largest max-width one we set). So as soon we go past this point these are now visible. Anything past our `lg` breakpoint is in our `xl` media-query territory, where you'll see the columns above are set to `.xl-1-12`. This allows you to create layouts that show and hide columns across the whole range of breakpoints! 
 
 ## Using your media queries for content
-So you've now got total control of your grid layout with your fractional widths and your custom namespaced modifiers - but what if you want to style content differently at these breakpoints as well? Layout and content changes tend to go hand in hand. This is where the '@include mg-media()' mixin comes in to play.
+So you've now got total control of your grid layout with your fractional widths and your custom namespaced modifiers - but what if you want to style content differently at these breakpoints as well? Layout and content changes tend to go hand in hand. This is where the `@include media()` mixin comes in to play.
 
 The `media` mixin takes one argument, `$namespace`, which it will try to match against the names of the media queries you defined at the beginning. So to target something at the `md` breakpoint, you would use `@include media(md)`. And if you're doing lots of changes, it might look like:
 
