@@ -31,7 +31,7 @@ $mg-gutter     : 24px;
 /* your .scss file */
 [Your own CSS]
 
-@import "path/to/matryosass-grid";
+@import "path/to/matryosass";
 
 [More of your own CSS]
 
