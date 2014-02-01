@@ -18,7 +18,9 @@ _Matryosass is for IE8 and above._
 
 ## Implementation
 
-Getting a Matryosass Grid up and running is quick and easy. Download the Sass file, define your variables, `@import` it into your stylesheet and off you go. 
+Getting a Matryosass Grid up and running is quick and easy. Download the Sass file, define your variables, `@import` it into your stylesheet and off you go.
+
+Since we're converting fractions to percentages I recommend you use the `--precision 10` flag when you compile your stylesheet. This will give much more consistency across browsers and devices.
 
 ```scss
 /* grid.scss */
@@ -60,6 +62,8 @@ $mg-border-box: true;
 <hr>
 ## $mg-bp*
 There are 5 breakpoints in Matryosass (4 max-width, 1 min-width). They work from smallest to largest.
+
+For each of these breakpoints you get three options: on/off, width, and name.
 #### $mg-bp-_n_
 The first option is to enable/disable the breakpoint. If you don't need one, switch it to `false` to get a filesize reward.
 ```scss
@@ -81,7 +85,7 @@ $mg-bp-xs-name     : 'xs';
 
 ## Grids: nesting, --rev, --flush
 
-To start with you'll need to wrap your grid in a class of `.grid`, this has a negative left margin (the same width as the column gutter) so you don't need to worry about any `.last` or `:nth-of-type:last` shenanigans. 
+To start with you'll need to wrap your grid in a class of `.grid`, this has a negative left margin (the same width as the column gutter) so you don't need to worry about any `.last` or `:last-of-type` shenanigans. 
 
 It is imperative you do not add any margins, widths or padding to the `.col` items themselves. They form the structure of your site, and you add content within them. To paraphrase Harry Roberts, "the grid and it's columns are the shelves on which you place your things."
 
@@ -153,22 +157,62 @@ And depending on your defined widths and names, this will behave something like:
     width: 100%; 
   }
 }
-.
+
 ```
 
 
 You can do some pretty powerful stuff with columns and media queries. This is a snippet taken from the [demo](http://quagliero.github.io/matryosass), specifically the light pink row. 
 ```html
-			<div class="col-1-10 xl-1-12 lg-1-2 md-1-3 sm-1-2">
-				<div class="demo-block"></div>
-			</div>
-			<!-- only show these on biig screens,
-				kinda like firebox end menu items -->
-			<div class="col-1-12 lg-hide">
-				<div class="demo-block"></div>
-			</div>
-			<div class="col-1-12 lg-hide">
-				<div class="demo-block"></div>
-			</div>
+<div class="col-1-10 xl-1-12 lg-1-2 md-1-3 sm-1-2">
+	<div class="demo-block"></div>
+</div>
+<!-- only show these on biig screens,
+	kinda like firebox.com end menu items -->
+<div class="col-1-12 lg-hide">
+	<div class="demo-block"></div>
+</div>
+<div class="col-1-12 lg-hide">
+	<div class="demo-block"></div>
+</div>
 ```
-We set the width of the last two items to one-twelfth, and hide them on our `lg` breakpoint (the largest max-width one we set). So as soon we go past this point these are now visible. Anything past our `lg` breakpoint is in our `xl` media-query territory, where you'll see the columns above are set to `.xl-1-12`.
+We set the width of the last two items to one-twelfth, and hide them on our `lg` breakpoint (the largest max-width one we set). So as soon we go past this point these are now visible. Anything past our `lg` breakpoint is in our `xl` media-query territory, where you'll see the columns above are set to `.xl-1-12`. This allows you to create layouts that show and hide columns across the whole range of breakpoints! 
+
+## Using your media queries for content
+So you've now got total control of your grid layout with your fractional widths and your custom namespaced modifiers - but what if you want to style content differently at these breakpoints as well? Layout and content changes tend to go hand in hand. This is where the '@include mg-media()' mixin comes in to play.
+
+The `mg-media` mixin takes one argument, `$namespace`, which it will try to match against the names of the media queries you defined at the beginning. So to target something at the `md` breakpoint, you would use `@include mg-media(md)`. And if you're doing lots of changes, it might look like:
+
+```scss
+.lede {
+	font-size: 2em;
+	
+	@include mg-media(xl) {
+		font-size: 2.2em;
+	}
+	@include mg-media(md) {
+		font-size: 1.6em
+	}
+	@include mg-media(sm) {
+		font-size: 1.3em;
+	}
+	@include mg-media(xs) {
+		font-size: 1.1em;
+	}
+}
+```
+If the `mg-media` mixin can't match your argument to one of your defined breakpoints, it will trigger the `@else` case, which is a wildcard. So you can pass through whatever you want to make a custom media query.
+
+```scss
+.lede {
+...
+	@include mg-media(min-width: 80em) {
+		font-size: 3em;
+	}
+}
+```
+## Contributing
+If you can improve Matryosass (and that includes the documentation!), amazing, send some pull requests this way!
+
+## In the wild
+I'd love to hear from you if you use Matryosass in any of your projects. Happy nesting.
+ 
