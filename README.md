@@ -23,7 +23,7 @@ Getting a Matryosass Grid up and running is quick and easy. Download the Sass fi
 Since we're converting fractions to percentages I recommend you use the `--precision 10` flag when you compile your stylesheet. This will give much more consistency across browsers and devices.
 
 ```scss
-/* grid.scss */
+/* matryo.scss */
 $mg-fractions  : 12;
 $mg-gutter     : 24px;
 ```
