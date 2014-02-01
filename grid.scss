@@ -12,14 +12,14 @@
  */
 
 /*
- * $mg-gutter       -- the gap between each column
  * $mg-fractions    -- don't think in columns, think in fractions... how many you want?
+ * $mg-gutter       -- the gap between each column
  * $mg-border-box   -- this grid utilises the border-box model
  * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
  */
 
-$mg-gutter      : 24px !default;
-$mg-fractions   : 12 !default;
+$mg-fractions   : 12;
+$mg-gutter      : 24px;
 $mg-border-box  : true;   /* set to false if you've declared it globally elsewhere */
 
 /*
@@ -32,19 +32,19 @@ $mg-border-box  : true;   /* set to false if you've declared it globally elsewhe
  */
 
 $mg-bp-xs          : true;
-$mg-bp-xs-width    : 480px !default; 
+$mg-bp-xs-width    : 30em; /* ~480px */
 $mg-bp-xs-name     : 'xs';
 
 $mg-bp-sm          : true;
-$mg-bp-sm-width    : 640px !default;
+$mg-bp-sm-width    : 40em; /* ~640px */
 $mg-bp-sm-name     : 'sm';
 
 $mg-bp-md          : true;
-$mg-bp-md-width    : 800px !default;
+$mg-bp-md-width    : 50em; /* ~800px */
 $mg-bp-md-name     : 'md';
 
 $mg-bp-lg          : true;
-$mg-bp-lg-width    : 1024px !default;
+$mg-bp-lg-width    : 64em; /* ~1024px */
 $mg-bp-lg-name     : 'lg';
 
 /* 
@@ -52,7 +52,7 @@ $mg-bp-lg-name     : 'lg';
  * to target things > your largest breakpoint
  */
 $mg-bp-xl         : true;
-$mg-bp-xl-width   : $mg-bp-lg-width + 1 !default;
+$mg-bp-xl-width   : $mg-bp-lg-width + .1;
 $mg-bp-xl-name    : 'xl';
 
 
@@ -124,7 +124,7 @@ $mg-bp-xl-name    : 'xl';
 
     /*
      * Go get our column widths
-     * to build our base grid with .grid__col- prefix
+     * and build our base grid with .col- prefix
      */
 
     @include cols();
@@ -194,6 +194,7 @@ $mg-bp-xl-name    : 'xl';
 /*
  * Let us use those breakpoints elsewhere...
  * @if/@else if -- Try and match the media-query namespace and assign relevant widths
+ * @else        -- so you can use it for custom queries if you wish
  */
 
 @mixin media($namespace) {
@@ -219,6 +220,11 @@ $mg-bp-xl-name    : 'xl';
     }
     @else if $namespace == $mg-bp-xs-name {
         @media (max-width: $mg-bp-xs-width) {
+            @content;
+        }
+    }
+    @else {
+        @media ($namespace) {
             @content;
         }
     }
