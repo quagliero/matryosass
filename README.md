@@ -129,7 +129,7 @@ But what if we don't want the modules to have any space between them? We make th
 ## Cols: widths, media-queries, -hide
 All grid columns require the `col-` class as this gives it the default styles it needs to behave like a column. We then suffix it with its default width, e.g. `<div class="col-1-3">`. 
 
-You can then manipulate the widths of columns across all five breakpoints by prefixing the fractional width with the namespace you gave to the media-query. `<div class="col-8-12 lg-3-5 md-1-2 sm-1-2 xs-1-1">`.
+You can then manipulate the widths of columns across all five breakpoints by prefixing the fractional width with the namespace you gave to the media-query. `<div class="col-3-4 lg-2-3 md-3-5 sm-1-2 xs-1-1">`.
 
 And depending on your defined widths and names, this will behave something like:
 ```css
