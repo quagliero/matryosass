@@ -180,32 +180,32 @@ We set the width of the last two items to one-twelfth, and hide them on our `lg`
 ## Using your media queries for content
 So you've now got total control of your grid layout with your fractional widths and your custom namespaced modifiers - but what if you want to style content differently at these breakpoints as well? Layout and content changes tend to go hand in hand. This is where the '@include mg-media()' mixin comes in to play.
 
-The `mg-media` mixin takes one argument, `$namespace`, which it will try to match against the names of the media queries you defined at the beginning. So to target something at the `md` breakpoint, you would use `@include mg-media(md)`. And if you're doing lots of changes, it might look like:
+The `media` mixin takes one argument, `$namespace`, which it will try to match against the names of the media queries you defined at the beginning. So to target something at the `md` breakpoint, you would use `@include media(md)`. And if you're doing lots of changes, it might look like:
 
 ```scss
 .lede {
 	font-size: 2em;
 	
-	@include mg-media(xl) {
+	@include media(xl) {
 		font-size: 2.2em;
 	}
-	@include mg-media(md) {
+	@include media(md) {
 		font-size: 1.6em
 	}
-	@include mg-media(sm) {
+	@include media(sm) {
 		font-size: 1.3em;
 	}
-	@include mg-media(xs) {
+	@include media(xs) {
 		font-size: 1.1em;
 	}
 }
 ```
-If the `mg-media` mixin can't match your argument to one of your defined breakpoints, it will trigger the `@else` case, which is a wildcard. So you can pass through whatever you want to make a custom media query.
+If the `media` mixin can't match your argument to one of your defined breakpoints, it will trigger the `@else` case, which is a wildcard. So you can pass through whatever you want to make a custom media query.
 
 ```scss
 .lede {
 ...
-	@include mg-media(min-width: 80em) {
+	@include media(min-width: 80em) {
 		font-size: 3em;
 	}
 }
