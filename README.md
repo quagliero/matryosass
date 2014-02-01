@@ -60,7 +60,7 @@ Matryosass uses `box-sizing: border-box` to keep everything in proportion. If yo
 $mg-border-box: true;
 ```
 <hr>
-## $mg-bp*
+### $mg-bp-*
 There are 5 breakpoints in Matryosass (4 max-width, 1 min-width). They work from smallest to largest.
 
 For each of these breakpoints you get three options: on/off, width, and name.
