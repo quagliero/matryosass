@@ -92,7 +92,7 @@ $mg-bp-xl-name    : 'xl';
         @extend .grid;
         margin-left: 0;
 
-        [class*='col-'] {
+        [class*='col'] {
             padding-left: 0;
         }
     }
@@ -101,7 +101,7 @@ $mg-bp-xl-name    : 'xl';
     .grid--rev {
         @extend .grid;
         
-        [class*='col-'] {
+        [class*='col'] {
             float: right;
         }
     }
@@ -110,7 +110,7 @@ $mg-bp-xl-name    : 'xl';
      * Columns always have one .col- class 
      * so give them a base style
      */
-     [class*='col-'] {
+     [class*='col'] {
         float: left;
         min-height: 1px; /* prevent collapsing columns */
         padding-left: $mg-gutter;
@@ -168,16 +168,26 @@ $mg-bp-xl-name    : 'xl';
  * .col-1-2, .xs-3-8, .lg-4-5
  */
 @mixin cols($namespace) {
-        
-    @for $i from 1 through $mg-fractions {
-        @for $j from 1 through $i {
-            @if $i != $j or $i == 1{
-                .#{$namespace}-#{$j}-#{$i} {
-                    width: percentage($j / $i);
+
+    // Set the variable to false only if it's not already set.
+    $j: null !default;
+
+    @if $j != null {
+        @for $i from 1 through $mg-fractions {
+            @for $j from 1 through $i {
+                @if $i != $j or $i == 1{
+                    .#{$namespace}-#{$j}-#{$i} {
+                        width: percentage($j / $i);
+                    }
                 }
             }
         }
+    } @else {
+        .#{$namespace} {
+            width: percentage(1);
+        }
     }
+    
     /* a helpful class to hide columns
      * e.g, .col-hide, .xl-hide, .md-hide
      */

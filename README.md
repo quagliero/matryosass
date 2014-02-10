@@ -6,7 +6,7 @@ You tell Matryosass how many columns you want, how big of a gutter, and what bre
 
 Matryosass Grid works in fractions; no more using 'sixcol' or 'col-6' when you just mean one half. The idea being you give a column a default width value, and then use your custom named media queries to act as width modifiers. 
 
-So if you wanted a three quarter width column you'd use `<div class="col-3-4">` and then if you wanted that to go down to 50% for medium screens and full width for very small screens, you'd use `<div class="col-3-4 md-1-2 xs-1-1">`.   
+So if you wanted a three quarter width column you'd use `<div class="col-3-4">` and then if you wanted that to go down to 50% for medium screens and full width for very small screens, you'd use `<div class="col-3-4 md-1-2 xs">`.   
 
 
 ## Demo
@@ -92,21 +92,21 @@ It is imperative you do not add any margins, widths or padding to the `.col` ite
 A simple two-column layout with a 40%:60% split, which collapses to full width at the smallest breakpoint:
 ```html
 <div class="grid">
-  <div class="col-2-5 xs-1-1">
+  <div class="col-2-5 xs">
     <!-- archive -->
   </div>
-  <div class="col-3-5 xs-1-1">
+  <div class="col-3-5 xs">
      <!-- blog post -->
   </div>
 </div>
 ```
-Now on a mobile device we probably want that display order to be reversed, so we'd use the `.grid--rev` class instead of `.grid`, which will float our `.col-` items to the right:
+Now on a mobile device we probably want that display order to be reversed, so we'd use the `.grid--rev` class instead of `.grid`, which will float our `.col` items to the right:
 ```html
 <div class="grid--rev">
-  <div class="col-2-5 xs-1-1">
+  <div class="col-2-5 xs">
     <!-- archive -->
   </div>
-  <div class="col-3-5 xs-1-1">
+  <div class="col-3-5 xs">
      <!-- I'm down here, but I will appear above the archive! -->
   </div>
 </div>
@@ -135,12 +135,12 @@ So what if we want a block of modules underneath the blog post, but within the s
 ...
 ```
 
-But what if we don't want the modules to have any space between them? We make things flush. Using `.grid--flush` instead of `.grid` removes all spacing between `.col-`s.
+But what if we don't want the modules to have any space between them? We make things flush. Using `.grid--flush` instead of `.grid` removes all spacing between `.col`s.
 
 ## Cols: widths, media-queries, -hide
-All grid columns require the `col-` class as this gives it the default styles it needs to behave like a column. We then suffix it with its default width, e.g. `<div class="col-1-3">`. 
+All grid columns require the `col` class as this gives it the default styles it needs to behave like a column. We then suffix it with its default width, e.g. `<div class="col-1-3">`. 
 
-You can then manipulate the widths of columns across all five breakpoints by prefixing the fractional width with the namespace you gave to the media-query. `<div class="col-3-4 lg-2-3 md-3-5 sm-1-2 xs-1-1">`.
+You can then manipulate the widths of columns across all five breakpoints by prefixing the fractional width with the namespace you gave to the media-query. `<div class="col-3-4 lg-2-3 md-3-5 sm-1-2 xs">`.
 
 And depending on your defined widths and names, this will behave something like:
 ```css
@@ -164,7 +164,7 @@ And depending on your defined widths and names, this will behave something like:
   }
 }
 @media (max-width: 640px) {
-  .xs-1-1 {
+  .xs {
     width: 100%; 
   }
 }
