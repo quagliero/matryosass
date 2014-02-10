@@ -18,8 +18,8 @@
  * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
  */
 
-$mg-gutter      : $base-spacing-unit;
-$mg-fractions   : $base-fractions;
+$mg-gutter      : 24px;
+$mg-fractions   : 12;
 $mg-border-box  : true;   /* set to false if you've declared it globally elsewhere */
 
 /*
