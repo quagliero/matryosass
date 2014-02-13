@@ -6,7 +6,7 @@ You tell Matryosass how many columns you want, how big of a gutter, and what bre
 
 Matryosass Grid works in fractions; no more using 'sixcol' or 'col-6' when you just mean one half. The idea being you give a column a default width value, and then use your custom named media queries to act as width modifiers. 
 
-So if you wanted a three quarter width column you'd use `<div class="col-3-4">` and then if you wanted that to go down to 50% for medium screens and full width for very small screens, you'd use `<div class="col-3-4 md-1-2 xs-1-1">`.   
+So if you wanted a three quarter width column you'd use `<div class="col-3/4">` and then if you wanted that to go down to 50% for medium screens and full width for very small screens, you'd use `<div class="col-3/4 md-1/2 xs-1">`.   
 
 
 ## Demo
@@ -23,12 +23,12 @@ Getting a Matryosass Grid up and running is quick and easy. Download the Sass fi
 Since we're converting fractions to percentages I recommend you use the `--precision 10` flag when you compile your stylesheet. This will give much more consistency across browsers and devices.
 
 ```scss
-/* matryo.scss */
+/* Your _vars or _settings .scss file */
 $mg-fractions  : 12;
 $mg-gutter     : 24px;
 ```
 ```scss
-/* your .scss file */
+/* your main .scss file */
 [Your own CSS]
 
 @import "path/to/matryosass";
@@ -44,6 +44,10 @@ Straight out of the box you get 12 fractional widths to use. Whole, halves, thir
 ```scss
 // @int
 $mg-fractions: 12;
+```
+####Update: You can now pass in a list! Don't need a full 12 colum fractions? Then only declare what you need.
+```scss
+$mg-fractions: 1,2,4,8
 ```
 <hr>
 ### $mg-gutter
@@ -92,10 +96,10 @@ It is imperative you do not add any margins, widths or padding to the `.col` ite
 A simple two-column layout with a 40%:60% split, which collapses to full width at the smallest breakpoint:
 ```html
 <div class="grid">
-  <div class="col-2-5 xs-1-1">
+  <div class="col-2/5 xs-1">
     <!-- archive -->
   </div>
-  <div class="col-3-5 xs-1-1">
+  <div class="col-3/5 xs-1">
      <!-- blog post -->
   </div>
 </div>
@@ -103,31 +107,31 @@ A simple two-column layout with a 40%:60% split, which collapses to full width a
 Now on a mobile device we probably want that display order to be reversed, so we'd use the `.grid--rev` class instead of `.grid`, which will float our `.col-` items to the right:
 ```html
 <div class="grid--rev">
-  <div class="col-2-5 xs-1-1">
+  <div class="col-2/5 xs-1">
     <!-- archive -->
   </div>
-  <div class="col-3-5 xs-1-1">
+  <div class="col-3/5 xs-1">
      <!-- I'm down here, but I will appear above the archive! -->
   </div>
 </div>
 ```
 
 
-So what if we want a block of modules underneath the blog post, but within the same column? We nest. This is when fractional widths become so awesome, because we still have access to our whole range of percentages - but within a new container! So let's have 3 evenly spaced out modules that are 1/3 of the width of the blog post column:
+So what if we want a block of modules underneath the blog post, but within the same column? We nest within a new `.grid`. This is when fractional widths become so awesome, because we still have access to our whole range of percentages - but within a new container! So let's have 3 evenly spaced out modules that are 1/3 of the width of the blog post column:
 ```html
 ...
-  <div class="col-3-5">
+  <div class="col-3/5">
      <!-- blog post -->
      
      <div class="grid">
       <!-- modules -->
-      <div class="col-1-3">
+      <div class="col-1/3">
         <!-- module 1 -->
       </div>
-      <div class="col-1-3">
+      <div class="col-1/3">
         <!-- module 1 -->
       </div>
-      <div class="col-1-3">
+      <div class="col-1/3">
         <!-- module 1 -->
       </div>
      </div>
@@ -138,33 +142,33 @@ So what if we want a block of modules underneath the blog post, but within the s
 But what if we don't want the modules to have any space between them? We make things flush. Using `.grid--flush` instead of `.grid` removes all spacing between `.col-`s.
 
 ## Cols: widths, media-queries, -hide
-All grid columns require the `col-` class as this gives it the default styles it needs to behave like a column. We then suffix it with its default width, e.g. `<div class="col-1-3">`. 
+All grid columns require the `col-` class as this gives it the default styles it needs to behave like a column. We then suffix it with its default width, e.g. `<div class="col-1/3">`. 
 
-You can then manipulate the widths of columns across all five breakpoints by prefixing the fractional width with the namespace you gave to the media-query. `<div class="col-3-4 lg-2-3 md-3-5 sm-1-2 xs-1-1">`.
+You can then manipulate the widths of columns across all five breakpoints by prefixing the fractional width with the namespace you gave to the media-query. `<div class="col-3/4 lg-2/3 md-3/5 sm-1/2 xs-1/1">`.
 
 And depending on your defined widths and names, this will behave something like:
 ```css
 
-.col-3-4 {
+.col-3\/4 {
   width: 75%;
 }
 @media (max-width: 1024px) {
-  .lg-2-3 {
+  .lg-2\/3 {
     width: 66.6666%; 
   }
 }
 @media (max-width: 800px) {
-  .md-3-5 {
+  .md-3\/5 {
     width: 60%; 
   }
 }
 @media (max-width: 640px) {
-  .sm-1-2 {
+  .sm-1\/2 {
     width: 50%; 
   }
 }
 @media (max-width: 640px) {
-  .xs-1-1 {
+  .xs-1 {
     width: 100%; 
   }
 }
@@ -174,19 +178,19 @@ And depending on your defined widths and names, this will behave something like:
 
 You can do some pretty powerful stuff with columns and media queries. This is a snippet taken from the [demo](http://quagliero.github.io/matryosass), specifically the light pink row. 
 ```html
-<div class="col-1-10 xl-1-12 lg-1-2 md-1-3 sm-1-2">
+<div class="col-1/10 xl-1/12 lg-1/2 md-1/3 sm-1/2">
 	<div class="demo-block"></div>
 </div>
 <!-- only show these on biig screens,
 	kinda like firebox.com end menu items -->
-<div class="col-1-12 lg-hide">
+<div class="col-1/12 lg-hide">
 	<div class="demo-block"></div>
 </div>
-<div class="col-1-12 lg-hide">
+<div class="col-1/12 lg-hide">
 	<div class="demo-block"></div>
 </div>
 ```
-We set the width of the last two items to one-twelfth, and hide them on our `lg` breakpoint (the largest max-width one we set). So as soon we go past this point these are now visible. Anything past our `lg` breakpoint is in our `xl` media-query territory, where you'll see the columns above are set to `.xl-1-12`. This allows you to create layouts that show and hide columns across the whole range of breakpoints! 
+We set the width of the last two items to one-twelfth, and hide them on our `lg` breakpoint (the largest max-width one we set). So as soon we go past this point these are now visible. Anything past our `lg` breakpoint is in our `xl` media-query territory, where you'll see the columns above are set to `.xl-1/12`. This allows you to create layouts that show and hide columns across the whole range of breakpoints! 
 
 ## Using your media queries for content
 So you've now got total control of your grid layout with your fractional widths and your custom namespaced modifiers - but what if you want to style content differently at these breakpoints as well? Layout and content changes tend to go hand in hand. This is where the `@include media()` mixin comes in to play.
@@ -225,5 +229,5 @@ If the `media` mixin can't match your argument to one of your defined breakpoint
 If you can improve Matryosass (and that includes the documentation!), amazing, send some pull requests this way!
 
 ## In the wild
-I'd love to hear from you if you use Matryosass in any of your projects. Happy nesting.
+I'd love to hear if you use Matryosass in any of your projects. Happy nesting.
  
