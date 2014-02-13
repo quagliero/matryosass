@@ -75,6 +75,7 @@ $mg-bp-xl-name    : 'xl' !default;
     .grid {
         margin-left: -$mg-gutter;
 
+        /* clear .col floats */
         &:after {
             content: "";
             display: table;
@@ -107,9 +108,10 @@ $mg-bp-xl-name    : 'xl' !default;
     }
 
     /*
-     * Columns always have one .col- class
+     * Columns always have one .col or .col- class
      * so give them a base style
      */
+     .col,
      [class*='col-'] {
         float: left;
         min-height: 1px; /* prevent collapsing columns */
@@ -120,6 +122,10 @@ $mg-bp-xl-name    : 'xl' !default;
             -o-box-sizing: border-box;
             box-sizing: border-box;
         }
+    }
+
+    .col {
+        width: 100%; /* default 100% width item */
     }
 
     /*
@@ -164,20 +170,50 @@ $mg-bp-xl-name    : 'xl' !default;
 
 /*
  * Function to handle the building of columns
+ * defined in $mg-fractions.
+ *  via a defined number, e.g. 12 OR
+ *  a collection of cols, e.g. 1,2,4,8
+ *
  * Set fractional based names for them e.g.
- * .col-1-2, .xs-3-8, .lg-4-5
+ * .col-1/2, .xs-3/8, .md-1, .lg-4/5
  */
 @mixin cols($namespace) {
 
-    @for $i from 1 through $mg-fractions {
-        @for $j from 1 through $i {
-            @if $i != $j or $i == 1{
-                .#{$namespace}-#{$j}\/#{$i} {
-                    width: percentage($j / $i);
+    // Check for a list of cols
+    @if type-of($mg-fractions) == list {
+        @each $i in $mg-fractions {
+            @for $j from 1 through $i {
+                @if $i != $j {
+                    .#{$namespace}-#{$j}\/#{$i} {
+                        width: percentage($j / $i);
+                    }
+                }
+                @elseif $i == 1 {
+                    .#{$namespace}-#{$j} {
+                        width: 100%;
+                    }
                 }
             }
         }
     }
+    // Otherwise treat is as number
+    @else {
+        @for $i from 1 through $mg-fractions {
+            @for $j from 1 through $i {
+                @if $i != $j {
+                    .#{$namespace}-#{$j}\/#{$i} {
+                        width: percentage($j / $i);
+                    }
+                }
+                @elseif $i == 1 {
+                    .#{$namespace}-#{$j} {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
     /* a helpful class to hide columns
      * e.g, .col-hide, .xl-hide, .md-hide
      */
@@ -189,7 +225,6 @@ $mg-bp-xl-name    : 'xl' !default;
         padding: 0;
     }
 }
-
 
 /*
  * Let us use those breakpoints elsewhere...
