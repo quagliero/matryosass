@@ -2,7 +2,9 @@
 
 Derived from 'Matryoshka' (a Russian nesting doll), Matryosass is a micro Sass library that gives you a fractional, nestable, responsive, reversible, <em>n-</em>col layout system - with custom namespaced media queries. It's a lovechild of [inuit.css](http://github.com/csswizardry/inuit.css), [Don't Overthink It Grids](http://css-tricks.com/dont-overthink-it-grids), [Naming Media Queries](http://css-tricks.com/naming-media-queries/), and Bootstrap.
 
-You tell Matryosass how many columns you want, how big of a gutter, and what breakpoints - if any - you need.  
+Matryosass can be as scaled back or as expressive as you need it to be; Static thirds, or responsive sixteenths.
+
+You tell it how many columns you want, how big of a gutter, and what breakpoints - if any - you need.  
 
 Matryosass Grid works in fractions; no more using 'sixcol' or 'col-6' when you just mean one half. The idea being you give a column a default width value, and then use your custom named media queries to act as width modifiers. 
 
