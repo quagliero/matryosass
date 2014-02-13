@@ -1,6 +1,6 @@
 # Matryosass
 
-Derived from 'Matryoshka' (a Russian nesting doll), Matryosass is a micro Sass library that gives you a fractional, nestable, responsive, reversible, <em>n-</em>col layout system - with custom namespaced media queries. It's a lovechild of [inuit.css](http://github.com/csswizardry/inuit.css), [Don't Overthink It Grids](http://css-tricks.com/dont-overthink-it-grids), [Naming Media Queries](http://css-tricks.com/naming-media-queries/), and Bootstrap.
+Derived from 'Matryoshka' (a Russian nesting doll), Matryosass is a focused Sass library that gives you a fractional, nestable, responsive, reversible, <em>n-</em>col layout system - with custom namespaced media queries. It's a lovechild of [inuit.css](http://github.com/csswizardry/inuit.css), [Don't Overthink It Grids](http://css-tricks.com/dont-overthink-it-grids), [Naming Media Queries](http://css-tricks.com/naming-media-queries/), and Bootstrap.
 
 Matryosass can be as scaled back or as expressive as you need it to be; Static thirds, or responsive sixteenths.
 
