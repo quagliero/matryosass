@@ -43,19 +43,18 @@ $mg-bp-md          : true !default;
 $mg-bp-md-width    : 50em !default; /* ~800px (800/16) */
 $mg-bp-md-name     : 'md' !default;
 
-/*
- * This last one is used as a MIN-width media query
- * to target things > your largest breakpoint
- */
-
 $mg-bp-lg          : true !default;
 $mg-bp-lg-width    : 64em !default; /* ~1024px (1024/16) */
 $mg-bp-lg-name     : 'lg' !default;
 
-$mg-bp-xl         : true !default;
-$mg-bp-xl-width   : 75em !default; /* ~1200px (1200/16)*/
-$mg-bp-xl-name    : 'xl' !default;
+/*
+ * This last one is used as a MIN-width media query
+ * to target things > your largest breakpoint...
+ */
 
+$mg-bp-xl         : true !default;
+$mg-bp-xl-width   : $mg-bp-lg-width + .00001 !default; /* So it's not true for both*/
+$mg-bp-xl-name    : 'xl' !default;
 
 /*
  * END $VARIABLES
@@ -140,7 +139,7 @@ $mg-bp-xl-name    : 'xl' !default;
             }
         }
         @if $mg-bp-lg {
-            @media (min-width: #{$mg-bp-lg-width}) {
+            @media (max-width: #{$mg-bp-lg-width}) {
                 @include cols($mg-bp-lg-name);
             }
         }
@@ -173,7 +172,7 @@ $mg-bp-xl-name    : 'xl' !default;
     @for $i from 1 through $mg-fractions {
         @for $j from 1 through $i {
             @if $i != $j or $i == 1{
-                .#{$namespace}-#{$j}-#{$i} {
+                .#{$namespace}-#{$j}\/#{$i} {
                     width: percentage($j / $i);
                 }
             }
