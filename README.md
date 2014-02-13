@@ -24,7 +24,7 @@ Since we're converting fractions to percentages I recommend you use the `--preci
 
 ```scss
 /* Your _vars or _settings .scss file */
-$mg-fractions  : 12;
+$mg-fractions  : 12; // this can also be a list, e.g. 1,2,4,8
 $mg-gutter     : 24px;
 ```
 ```scss
@@ -45,7 +45,7 @@ Straight out of the box you get 12 fractional widths to use. Whole, halves, thir
 // @int
 $mg-fractions: 12;
 ```
-####Update: You can now pass in a list! Don't need a full 12 colum fractions? Then only declare what you need.
+####Update: You can now pass in a list! Don't need a full 12 column fractions? Then only declare what you need.
 ```scss
 $mg-fractions: 1,2,4,8
 ```
