@@ -26,8 +26,8 @@ Since we're converting fractions to percentages I recommend you use the `--preci
 
 ```scss
 /* Your _vars or _settings .scss file */
-$mg-fractions  : 12; // this can also be a list, e.g. 1,2,4,8
-$mg-gutter     : 24px;
+$matryo-fractions  : 12; // this can also be a list, e.g. 1,2,4,8
+$matryo-gutter     : 24px;
 ```
 ```scss
 /* your main .scss file */
@@ -41,52 +41,52 @@ $mg-gutter     : 24px;
 
 ## Settings
 
-### $mg-fractions
-Straight out of the box you get 12 fractional widths to use. Whole, halves, thirds, quarters, fifths, sixths, sevenths... you get the idea. But you can have as many (or few) as you want. Whatever number you assign to `$mg-fractions` will be the amount you get.
+### $matryo-fractions
+Straight out of the box you get 12 fractional widths to use. Whole, halves, thirds, quarters, fifths, sixths, sevenths... you get the idea. But you can have as many (or few) as you want. Whatever number you assign to `$matryo-fractions` will be the amount you get.
 ```scss
 // @int
-$mg-fractions: 12;
+$matryo-fractions: 12;
 ```
 ####Update: You can now pass in a list! Don't need a full 12 column fractions? Then only declare what you need.
 ```scss
-$mg-fractions: 1,2,4,8
+$matryo-fractions: 1,2,4,8
 ```
 <hr>
-### $mg-gutter
+### $matryo-gutter
 Nothing crazy here, just the distance between each column. I'd recommend matching it to your base line height for some horizontal and vertical rhythm. Vertical rhythm? There are things like [Typcsset](http://github.com/csswizardry/typecsset) which are great at this.
 ```scss
 // @int + unit
-$mg-gutter: 24px;
+$matryo-gutter: 24px;
 ```
 <hr>
-### $mg-border-box
+### $matryo-border-box
 Matryosass uses `box-sizing: border-box` to keep everything in proportion. If you've already got this defined globally, or with normalize.css, then feel free to set this to false.
 ```scss
 // @bool
-$mg-border-box: true;
+$matryo-border-box: true;
 ```
 <hr>
-### $mg-bp-*
+### $matryo-bp-*
 There are 5 breakpoints in Matryosass (4 max-width, 1 min-width). They work from smallest to largest.
 
 For each of these breakpoints you get three options: on/off, width, and name.
-#### $mg-bp-_n_
+#### $matryo-bp-_n_
 The first option is to enable/disable the breakpoint. If you don't need one, switch it to `false` to get a filesize reward.
 ```scss
 // @bool
-$mg-bp-xs          : true;
+$matryo-bp-xs          : true;
 ```
-#### $mg-bp-_n_-width
+#### $matryo-bp-_n_-width
 Aptly named: define the width for the breakpoint.
 ```scss
 // @int + unit
-$mg-bp-xs-width    : 30em; /* ~480px */
+$matryo-bp-xs-width    : 30em; /* ~480px */
 ```
-#### $mg-bp-_n_-name
+#### $matryo-bp-_n_-name
 These will be the names you prefix to your column with modifiers, and also when you use the `@include media` mixin. By default these are named `xs`,`sm`,`md`,`lg`,`xl` for those familiar with Bootstrap - though I urge you to use naming conventions that work for __you__. 
 ```scss
 // @string
-$mg-bp-xs-name     : 'xs';
+$matryo-bp-xs-name     : 'xs';
 ```
 
 ## Grids: nesting, --rev, --flush

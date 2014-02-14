@@ -2,8 +2,6 @@
  *
  * matryosass -- @quagliero
  * Infinitely nestable grids with as many fractional widths as you like
- */
-/* ... use until CSS Grid Layouts become a reality http://www.w3.org/TR/2014/WD-css-grid-1-20140123/
  * Licensed with the 'do whatever you want with it' one.
  */
 
@@ -12,49 +10,49 @@
  */
 
 /*
- * $mg-gutter       -- the gap between each column
- * $mg-fractions    -- don't think in columns, think in fractions... how many you want?
- * $mg-border-box   -- this grid utilises the border-box model
+ * $matryo-gutter       -- the gap between each column
+ * $matryo-fractions    -- don't think in columns, think in fractions... how many you want?
+ * $matryo-border-box   -- this grid utilises the border-box model
  * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
  */
 
-$mg-gutter      : 24px !default;
-$mg-fractions   : 12 !default;
-$mg-border-box  : true !default;   /* set to false if you've declared it globally elsewhere */
+$matryo-gutter      : 24px !default;
+$matryo-fractions   : 12 !default;
+$matryo-border-box  : true !default;   /* set to false if you've declared it globally elsewhere */
 
 /*
  * Define your breakpoints
  *
- *   $mg-bp-{n}          -- enable/disable specific breakpoint
- *   $mg-bp-{n}-width    -- define a width for a breakpoint
- *   $mg-bp-{n}-name     -- give that breakpoint a name
+ *   $matryo-bp-{n}          -- enable/disable specific breakpoint
+ *   $matryo-bp-{n}-width    -- define a width for a breakpoint
+ *   $matryo-bp-{n}-name     -- give that breakpoint a name
  *   http://css-tricks.com/naming-media-queries/
  */
 
-$mg-bp-xs          : true !default;
-$mg-bp-xs-width    : 30em !default; /* ~480px (480/16) */
-$mg-bp-xs-name     : 'xs' !default;
+$matryo-bp-xs          : true !default;
+$matryo-bp-xs-width    : 30em !default; /* ~480px (480/16) */
+$matryo-bp-xs-name     : 'xs' !default;
 
-$mg-bp-sm          : true !default;
-$mg-bp-sm-width    : 40em !default; /* ~640px (640/16) */
-$mg-bp-sm-name     : 'sm' !default;
+$matryo-bp-sm          : true !default;
+$matryo-bp-sm-width    : 40em !default; /* ~640px (640/16) */
+$matryo-bp-sm-name     : 'sm' !default;
 
-$mg-bp-md          : true !default;
-$mg-bp-md-width    : 50em !default; /* ~800px (800/16) */
-$mg-bp-md-name     : 'md' !default;
+$matryo-bp-md          : true !default;
+$matryo-bp-md-width    : 50em !default; /* ~800px (800/16) */
+$matryo-bp-md-name     : 'md' !default;
 
-$mg-bp-lg          : true !default;
-$mg-bp-lg-width    : 64em !default; /* ~1024px (1024/16) */
-$mg-bp-lg-name     : 'lg' !default;
+$matryo-bp-lg          : true !default;
+$matryo-bp-lg-width    : 64em !default; /* ~1024px (1024/16) */
+$matryo-bp-lg-name     : 'lg' !default;
 
 /*
  * This last one is used as a MIN-width media query
  * to target things > your largest breakpoint...
  */
 
-$mg-bp-xl         : true !default;
-$mg-bp-xl-width   : $mg-bp-lg-width + .00001 !default; /* So it's not true for both*/
-$mg-bp-xl-name    : 'xl' !default;
+$matryo-bp-xl         : true !default;
+$matryo-bp-xl-width   : $matryo-bp-lg-width + .00001 !default; /* So it's not true for both*/
+$matryo-bp-xl-name    : 'xl' !default;
 
 /*
  * END $VARIABLES
@@ -64,16 +62,16 @@ $mg-bp-xl-name    : 'xl' !default;
 
 
 /*
- * Build our grid with columns (and breakpoints)
+ * Build our grid with columns and (optional) breakpoints
  */
-@mixin grid() {
+@mixin _grid() {
     /*
      * Define the .grid to wrap our items in and
      * offset the gutter with a negative margin so
      * we don't need to use .last
      */
     .grid {
-        margin-left: -$mg-gutter;
+        margin-left: -$matryo-gutter;
 
         /* clear .col floats */
         &:after {
@@ -115,8 +113,8 @@ $mg-bp-xl-name    : 'xl' !default;
      [class*='col-'] {
         float: left;
         min-height: 1px; /* prevent collapsing columns */
-        padding-left: $mg-gutter;
-        @if $mg-border-box {
+        padding-left: $matryo-gutter;
+        @if $matryo-border-box {
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
             -o-box-sizing: border-box;
@@ -133,35 +131,35 @@ $mg-bp-xl-name    : 'xl' !default;
      * and build our base grid with .col- prefix
      */
 
-    @include cols('col');
+    @include _cols('col');
 
         /*
          * Let's get busy break-pointin' and create
          * some suepr awsum namespaced responsive grid widths
          */
-        @if $mg-bp-xl {
-            @media (min-width: #{$mg-bp-xl-width}) {
-                @include cols($mg-bp-xl-name);
+        @if $matryo-bp-xl {
+            @media (min-width: #{$matryo-bp-xl-width}) {
+                @include _cols($matryo-bp-xl-name);
             }
         }
-        @if $mg-bp-lg {
-            @media (max-width: #{$mg-bp-lg-width}) {
-                @include cols($mg-bp-lg-name);
+        @if $matryo-bp-lg {
+            @media (max-width: #{$matryo-bp-lg-width}) {
+                @include _cols($matryo-bp-lg-name);
             }
         }
-        @if $mg-bp-md {
-            @media (max-width: #{$mg-bp-md-width}) {
-                @include cols($mg-bp-md-name);
+        @if $matryo-bp-md {
+            @media (max-width: #{$matryo-bp-md-width}) {
+                @include _cols($matryo-bp-md-name);
             }
         }
-        @if $mg-bp-sm {
-            @media (max-width: #{$mg-bp-sm-width}) {
-                @include cols($mg-bp-sm-name);
+        @if $matryo-bp-sm {
+            @media (max-width: #{$matryo-bp-sm-width}) {
+                @include _cols($matryo-bp-sm-name);
             }
         }
-        @if $mg-bp-xs {
-            @media (max-width: #{$mg-bp-xs-width}) {
-                @include cols($mg-bp-xs-name);
+        @if $matryo-bp-xs {
+            @media (max-width: #{$matryo-bp-xs-width}) {
+                @include _cols($matryo-bp-xs-name);
             }
         }
 
@@ -170,46 +168,26 @@ $mg-bp-xl-name    : 'xl' !default;
 
 /*
  * Function to handle the building of columns
- * defined in $mg-fractions.
+ * defined in $matryo-fractions.
  *  via a defined number, e.g. 12 OR
  *  a collection of cols, e.g. 1,2,4,8
  *
- * Set fractional based names for them e.g.
- * .col-1/2, .xs-3/8, .md-1, .lg-4/5
  */
-@mixin cols($namespace) {
+@mixin _cols($namespace) {
 
     // Check for a list of cols
-    @if type-of($mg-fractions) == list {
-        @each $i in $mg-fractions {
+    @if type-of($matryo-fractions) == list {
+        @each $i in $matryo-fractions {
             @for $j from 1 through $i {
-                @if $i != $j {
-                    .#{$namespace}-#{$j}\/#{$i} {
-                        width: percentage($j / $i);
-                    }
-                }
-                @elseif $i == 1 {
-                    .#{$namespace}-#{$j} {
-                        width: 100%;
-                    }
-                }
+                @include _col-classes($namespace, $j, $i);
             }
         }
     }
     // Otherwise treat is as number
     @else {
-        @for $i from 1 through $mg-fractions {
+        @for $i from 1 through $matryo-fractions {
             @for $j from 1 through $i {
-                @if $i != $j {
-                    .#{$namespace}-#{$j}\/#{$i} {
-                        width: percentage($j / $i);
-                    }
-                }
-                @elseif $i == 1 {
-                    .#{$namespace}-#{$j} {
-                        width: 100%;
-                    }
-                }
+                @include _col-classes($namespace, $j, $i);
             }
         }
     }
@@ -227,34 +205,62 @@ $mg-bp-xl-name    : 'xl' !default;
 }
 
 /*
- * Let us use those breakpoints elsewhere...
+ * Set fractional based names for namespaced columns
+ * .col-1/2, .xs-3/8, .md-1, .lg-4/5
+ *
+ */
+@mixin _col-classes($namespace, $j, $i) {
+    @if $i != $j {
+        .#{$namespace}-#{$j}\/#{$i} {
+            width: percentage($j / $i);
+        }
+    }
+    @elseif $i == 1 {
+        .#{$namespace}-#{$j} {
+            width: 100%;
+        }
+    }
+}
+
+/*
+ * Build our grid, yo
+ */
+@include _grid();
+
+
+
+
+/* PUBLIC Matryosass mixin(s) */
+
+/*
+ * Let us use our breakpoints for all content...
  * @if/@else if -- Try and match the media-query namespace and assign relevant widths
  * @else        -- so you can use it for custom queries if you wish
  */
 
 @mixin media($namespace) {
-    @if $namespace == $mg-bp-xl-name {
-        @media (min-width: #{$mg-bp-xl-width}) {
+    @if $namespace == $matryo-bp-xl-name {
+        @media (min-width: #{$matryo-bp-xl-width}) {
             @content;
         }
     }
-    @else if $namespace == $mg-bp-lg-name {
-        @media (max-width: #{$mg-bp-lg-width}) {
+    @else if $namespace == $matryo-bp-lg-name {
+        @media (max-width: #{$matryo-bp-lg-width}) {
             @content;
         }
     }
-    @else if $namespace == $mg-bp-md-name {
-        @media (max-width: #{$mg-bp-md-width}) {
+    @else if $namespace == $matryo-bp-md-name {
+        @media (max-width: #{$matryo-bp-md-width}) {
             @content;
         }
     }
-    @else if $namespace == $mg-bp-sm-name {
-        @media (max-width: #{$mg-bp-sm-width}) {
+    @else if $namespace == $matryo-bp-sm-name {
+        @media (max-width: #{$matryo-bp-sm-width}) {
             @content;
         }
     }
-    @else if $namespace == $mg-bp-xs-name {
-        @media (max-width: #{$mg-bp-xs-width}) {
+    @else if $namespace == $matryo-bp-xs-name {
+        @media (max-width: #{$matryo-bp-xs-width}) {
             @content;
         }
     }
@@ -264,11 +270,6 @@ $mg-bp-xl-name    : 'xl' !default;
         }
     }
 }
-
-/*
- * Build our grid, yo
- */
-@include grid();
 
 
 /* Fin. */
