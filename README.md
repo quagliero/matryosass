@@ -106,6 +106,7 @@ A simple two-column layout with a 40%:60% split, which collapses to full width a
   </div>
 </div>
 ```
+### Nesting
 Now on a mobile device we probably want that display order to be reversed, so we'd use the `.grid--rev` class instead of `.grid`, which will float our `.col-` items to the right:
 ```html
 <div class="grid--rev">
@@ -118,7 +119,7 @@ Now on a mobile device we probably want that display order to be reversed, so we
 </div>
 ```
 
-
+### Reversing
 So what if we want a block of modules underneath the blog post, but within the same column? We nest within a new `.grid`. This is when fractional widths become so awesome, because we still have access to our whole range of percentages - but within a new container! So let's have 3 evenly spaced out modules that are 1/3 of the width of the blog post column:
 ```html
 ...
@@ -140,7 +141,7 @@ So what if we want a block of modules underneath the blog post, but within the s
   </div>
 ...
 ```
-
+### Flush
 But what if we don't want the modules to have any space between them? We make things flush. Using `.grid--flush` instead of `.grid` removes all spacing between `.col-`s.
 
 ## Cols: widths, media-queries, -hide
@@ -150,7 +151,9 @@ You can then manipulate the widths of columns across all five breakpoints by pre
 
 And depending on your defined widths and names, this will behave something like:
 ```css
-
+/* The \ escape character is only required in the CSS, 
+	you don't need to use it in your HTML */
+	
 .col-3\/4 {
   width: 75%;
 }
