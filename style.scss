@@ -1,114 +1,232 @@
 @charset "utf-8";
 
-$pink: #FF3F5E;
-$text: #171717;
+$color1: #606060;
+$color2: #7a7a7a;
+$color3: #fc2b83;
+$color4: #fd5da1;
+$color5: #fe8fbe;
+$color6: #232323;
+$color7: #222;
 
 @import "matryo";
+@import url(http://fonts.googleapis.com/css?family=Raleway:600,300|Pacifico);
 
 /* default stuff */
 html, body {
   margin: 0;
+  padding: 0;
   font-family: sans-serif;
-  color: $text; 
+  font-weight: 300;
+  line-height: 1.4;
+  text-align: center;
 }
+
 a {
-  color: #ffcc00;
   text-decoration: none;
+  color: $color3;
 }
 
 /* Page title */
-h1 {
-  font-size: 1.2em;
-  margin-bottom: 1em; 
+h1, h2, h3 {
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+}
 
+h1 {
+  font-size: 1em; /* controlled by the header strap */
+  margin-bottom: 1em;
+  font-weight: 300;
+}
+
+/* Sub titles */
+ h2, h3 {
+  font-weight: 600;
+ }
+
+ h2 {
+    font-size: 1.6em
+ }
+
+ h3 {
+  font-size: 1.2em;
+ }
+
+/* Full width sections */
+.strap {
+  padding: 24px 0;
+}
+.strap--head {
+  background-color: $color7;
+  color: #fff;
   @include media(xl) {
-    font-size: 2em;
+    font-size: 1.85em;
   }
   @include media(lg) {
-    font-size: 1.7em;
+    font-size: 1.4em;
   }
   @include media(md) {
-    font-size: 1.4em;
+    font-size: 1.1em;
   }
   @include media(sm) {
     font-size: 1em;
   }
   @include media(xs) {
-    font-size: .8em;
+    font-size: .9em;
   }
 }
 
-/* Logo & by line and quagliero */
-.logo {
-  background-color: $pink;
+.strap--matryoshka {
+  background-color: $color6;
   color: #fff;
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0 2em 2em 0;
-  padding: 1.2em;
-  font-size: 10px;
-  box-shadow: -0.5em -0.5em 0 lighten($pink,20%), 
-  0.5em 0.5em 0 darken($pink,20%), 
-  -1em -1em 0 lighten($pink,30%), 
-  1em 1em 0 darken($pink,30%), 
-  inset 0 0 0 lighten($pink,8%), 
-  inset -0.66em 0 0 darken($pink, 8%), 
-  inset -1.2em 0 0 lighten($pink,8%), 
-  inset -1.2em 0.66em 0 darken($pink,12%), 
-  inset -1.9em 0.66em 0 darken($pink,16%); 
 }
 
-.by-line {
-  display: inline-block;
-  vertical-align: middle;
-  color: #333; 
-}
 
-.author {
-  width: 60px;
-  vertical-align: middle;
-  border: 0; 
-  outline: 0;
-}
 /* Grid wrapper stuff */
 .wrapper {
   max-width: 1140px;
-  margin: 20px auto;
-  padding: 0 20px; 
+  margin: 0 auto;
+  padding: 0 20px;
 }
+
+.clear {
+  clear: left;
+}
+
+/* Logo */
+.logo {
+  display: inline-block;
+  padding: .6em;
+  border: .2em solid darken($color2, 20%);
+  outline: .2em solid $color1;
+  margin-right: .2em;
+  vertical-align: middle;
+  background-color: $color3;
+}
+
+.logo-title {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+  font-size: 1.5em;
+  font-family: "Pacifico", cursive;
+}
+
+.logo-title__github {
+  margin-top: .5em;
+}
+
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: .4em;
+  margin-left: .2em;
+  margin-right: .2em;
+  border-width: .2em 0 0;
+  border-style: solid;
+  font-size: .8em;
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  -webkit-transition: .2s ease-out;
+  -moz-transition: .2s ease-out;
+  -o-transition: .2s ease-out;
+  transition: .2s ease-out;
+}
+
+.btn--download {
+  color: lighten($color1, 40%);
+  background-color: $color1;
+  border-color: lighten($color1, 10%);
+  &:hover {
+    border-color: $color1;
+    background-color: lighten($color1, 10%);
+  }
+}
+
+.btn--view {
+  color: lighten($color3, 40%);
+  background-color: $color3;
+  border-color: lighten($color3, 10%);
+  &:hover {
+      border-color: $color3;
+      background-color: lighten($color3, 10%);
+    }
+}
+
+.btn--docs {
+  color: lighten($color5, 40%);
+  background-color: $color5;
+  border-color: lighten($color5, 10%);
+  &:hover {
+    border-color: $color5;
+    background-color: lighten($color5, 10%);
+  }
+}
+
+/* Info blocks */
+.info__content {
+  text-align: left;
+
+  a {
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.icon {
+  font-size: 4em;
+  line-height: 1;
+  color: $color3;
+}
+
+
+/* By quagliero */
+.author {
+  margin: 1em;
+}
+
+.author__img {
+  width: 80px;
+  vertical-align: middle;
+}
+
+
+/* Oh hai there. Yeszir, this is bad.
+   But it serves a purpose for a demo */
 
 .demo-block {
   height: 2em;
-  background: #d8d8d8;
-  margin-bottom: 12px; 
+  background: $color6;
+  margin-bottom: 12px;
 }
 
-/* Oh hai there. Yeszir, this is bad. 
-   But it serves a purpose for a demo */
 .grid {
     .grid {
         .demo-block {
-            background: $pink;
+            background: darken($color1, 10%);
         }
     }
     .grid--rev {
         .demo-block {
-            background: #888;
+            background: $color3;
         }
     }
     .grid--flush {
         > div:nth-child(odd) {
           .demo-block {
-              background: darken($pink,35%);
+              background: $color5;
           }
         }
     }
 }
 
-.xl-1-12, 
-.lg-hide { 
+.xl-1\/12,
+.lg-hide {
     .demo-block {
-        background-color: lighten($pink,30%); 
+        background-color: $color4;
     }
 }
 
