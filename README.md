@@ -13,7 +13,7 @@ So if you wanted a three quarter width column you'd use `<div class="col-3/4">` 
 
 ## Demo
 
-* [View demo](http://quagliero.github.io/matryosass) (the pink is nested, the grey is reversed!)
+* [View demo](http://quagliero.github.io/matryosass)
 * [View demo code](https://github.com/quagliero/matryosass/tree/gh-pages)
 
 _Matryosass is for IE8 and above._
