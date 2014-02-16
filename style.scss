@@ -164,7 +164,29 @@ h1 {
   }
 }
 
+
 /* Info blocks */
+
+.icon {
+  font-size: 4em;
+  line-height: 1;
+  color: $color3;
+
+  @include media(sm) {
+    line-height: .5;
+  }
+}
+
+.info {
+  margin-top: 1em;
+}
+
+.info__title {
+  @include media(md) {
+    text-align: left;
+  }
+}
+
 .info__content {
   text-align: left;
 
@@ -174,12 +196,6 @@ h1 {
       text-decoration: none;
     }
   }
-}
-
-.icon {
-  font-size: 4em;
-  line-height: 1;
-  color: $color3;
 }
 
 
