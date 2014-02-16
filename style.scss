@@ -210,15 +210,15 @@ h1 {
 }
 
 
-/* Oh hai there. Yeszir, this is bad.
-   But it serves a purpose for a demo */
-
+/* The matryoshka doll demo */
 .demo-block {
   height: 2em;
   background: $color6;
   margin-bottom: 12px;
 }
 
+/* Oh hai there. This isn't recommended.
+   It serves a purpose for a demo */
 .grid {
     .grid {
         .demo-block {
@@ -238,8 +238,8 @@ h1 {
         }
     }
 }
-
-.xl-1\/12,
+/* And this is even worse */
+.doll-demo,
 .lg-hide {
     .demo-block {
         background-color: $color4;
