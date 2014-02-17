@@ -55,6 +55,7 @@ h1 {
 .strap {
   padding: 24px 0;
 }
+
 .strap--head {
   background-color: $color7;
   color: #fff;
@@ -217,6 +218,7 @@ h1 {
   margin-bottom: 12px;
 }
 
+
 /* Oh hai there. This isn't recommended.
    It serves a purpose for a demo */
 .grid {
@@ -238,7 +240,7 @@ h1 {
         }
     }
 }
-/* And this is even worse */
+.doll-demo,
 .lg-hide {
     .demo-block {
         background-color: $color4;
