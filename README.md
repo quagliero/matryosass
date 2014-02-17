@@ -1,12 +1,12 @@
-# Matryosass
+# Matryo
 
-Derived from 'Matryoshka' (a Russian nesting doll), Matryosass is a focused Sass library that gives you a fractional, nestable, responsive, reversible, <em>n-</em>col layout system - with custom namespaced media queries. It's a lovechild of [inuit.css](http://github.com/csswizardry/inuit.css), [Don't Overthink It Grids](http://css-tricks.com/dont-overthink-it-grids), [Naming Media Queries](http://css-tricks.com/naming-media-queries/), and Bootstrap.
+Derived from 'Matryoshka' (a Russian nesting doll), Matryo is a focused Sass library that gives you a fractional, nestable, responsive, reversible, <em>n-</em>col layout system - with custom namespaced media queries. It's a lovechild of [inuit.css](http://github.com/csswizardry/inuit.css), [Don't Overthink It Grids](http://css-tricks.com/dont-overthink-it-grids), [Naming Media Queries](http://css-tricks.com/naming-media-queries/), and Bootstrap.
 
-Matryosass can be as scaled back or as expressive as you need it to be; Static thirds, or responsive sixteenths.
+MatryoSass can be as scaled back or as expressive as you need it to be; Static thirds, or responsive sixteenths.
 
 You tell it how many columns you want, how big of a gutter, and what breakpoints - if any - you need.  
 
-Matryosass Grid works in fractions; no more using 'sixcol' or 'col-6' when you just mean one half. The idea being you give a column a default width value, and then use your custom named media queries to act as width modifiers. 
+Matryo works in fractions; no more using 'sixcol', 'span6, or 'col-6' when you just mean one half. The idea being you give a column a default width value, and then use your custom named media queries to act as width modifiers. 
 
 So if you wanted a three quarter width column you'd use `<div class="col-3/4">` and then if you wanted that to go down to 50% for medium screens and full width for very small screens, you'd use `<div class="col-3/4 md-1/2 xs-1">`.   
 
@@ -20,7 +20,7 @@ _Matryosass is for IE8 and above._
 
 ## Implementation
 
-Getting a Matryosass Grid up and running is quick and easy. Download the Sass file, define your variables, `@import` it into your stylesheet and off you go.
+Getting Matryo up and running is quick and easy. Download the Sass file, define your variables, `@import` it into your stylesheet and off you go.
 
 Since we're converting fractions to percentages I recommend you use the `--precision 10` flag when you compile your stylesheet. This will give much more consistency across browsers and devices.
 
@@ -60,7 +60,7 @@ $matryo-gutter: 24px;
 ```
 <hr>
 ### $matryo-border-box
-Matryosass uses `box-sizing: border-box` to keep everything in proportion. If you've already got this defined globally, or with normalize.css, then feel free to set this to false.
+Matryo uses `box-sizing: border-box` to keep everything in proportion. If you've already got this defined globally, or with normalize.css, then feel free to set this to false.
 ```scss
 // @bool
 $matryo-border-box: true;
@@ -231,8 +231,8 @@ If the `media` mixin can't match your argument to one of your defined breakpoint
 }
 ```
 ## Contributing
-If you can improve Matryosass (and that includes the documentation!), amazing, send some pull requests this way!
+If you can improve Matryo (and that includes the documentation!), amazing, send some pull requests this way!
 
 ## In the wild
-I'd love to hear if you use Matryosass in any of your projects. Happy nesting.
+I'd love to hear if you use Matryo in any of your projects. Happy nesting.
  
