@@ -63,6 +63,8 @@ h1 {
 .strap--head {
   background-color: $color7;
   color: #fff;
+  font-size: 1.7em;
+  
   @include media(xl) {
     font-size: 1.85em;
   }
