@@ -8,7 +8,7 @@ You tell it how many columns you want, how big of a gutter, and what breakpoints
 
 Matryo works in fractions; no more using 'sixcol', 'span6, or 'col-6' when you just mean one half. The idea being you give a column a default width value, and then use your custom named media queries to act as width modifiers. 
 
-So if you wanted a three quarter width column you'd use `<div class="col-3/4">` and then if you wanted that to go down to 50% for medium screens and full width for very small screens, you'd use `<div class="col-3/4 md-1/2 xs-1">`.   
+So if you wanted a three quarter width column you'd use `<div class="grid__col 3/4">` and then if you wanted that to go down to 50% for medium screens and full width for very small screens, you'd use `<div class="grid__col 3/4 md-1/2 xs-1">`.   
 
 
 ## Demo
@@ -98,10 +98,10 @@ It is imperative you do not add any margins, widths or padding to the `.col` ite
 A simple two-column layout with a 40%:60% split, which collapses to full width at the smallest breakpoint:
 ```html
 <div class="grid">
-  <div class="col-2/5 xs-1">
+  <div class="grid__col 2/5 xs-1">
     <!-- archive -->
   </div>
-  <div class="col-3/5 xs-1">
+  <div class="grid__col 3/5 xs-1">
      <!-- blog post -->
   </div>
 </div>
@@ -110,10 +110,10 @@ A simple two-column layout with a 40%:60% split, which collapses to full width a
 Now on a mobile device we probably want that display order to be reversed, so we'd use the `.grid--rev` class instead of `.grid`, which will float our `.col-` items to the right:
 ```html
 <div class="grid--rev">
-  <div class="col-2/5 xs-1">
+  <div class="grid__col 2/5 xs-1">
     <!-- archive -->
   </div>
-  <div class="col-3/5 xs-1">
+  <div class="grid__col 3/5 xs-1">
      <!-- I'm down here, but I will appear above the archive! -->
   </div>
 </div>
@@ -123,18 +123,18 @@ Now on a mobile device we probably want that display order to be reversed, so we
 So what if we want a block of modules underneath the blog post, but within the same column? We nest within a new `.grid`. This is when fractional widths become so awesome, because we still have access to our whole range of percentages - but within a new container! So let's have 3 evenly spaced out modules that are 1/3 of the width of the blog post column:
 ```html
 ...
-  <div class="col-3/5">
+  <div class="grid__col 3/5">
      <!-- blog post -->
      
      <div class="grid">
       <!-- modules -->
-      <div class="col-1/3">
+      <div class="grid__col 1/3">
         <!-- module 1 -->
       </div>
-      <div class="col-1/3">
+      <div class="grid__col 1/3">
         <!-- module 1 -->
       </div>
-      <div class="col-1/3">
+      <div class="grid__col 1/3">
         <!-- module 1 -->
       </div>
      </div>
@@ -142,33 +142,32 @@ So what if we want a block of modules underneath the blog post, but within the s
 ...
 ```
 ### Flush
-But what if we don't want the modules to have any space between them? We make things flush. Using `.grid--flush` instead of `.grid` removes all spacing between `.col-`s.
+But what if we don't want the modules to have any space between them? We make things flush. Using `.grid--flush` instead of `.grid` removes all spacing between `.grid__col`s.
 
 ## Cols: widths, media-queries, -hide
-All grid columns require the `col-` class as this gives it the default styles it needs to behave like a column. We then suffix it with its default width, e.g. `<div class="col-1/3">`. 
+All grid columns require the `col-` class as this gives it the default styles it needs to behave like a column. We then suffix it with its default width, e.g. `<div class="grid__col 1/3">`. 
 
-You can then manipulate the widths of columns across all five breakpoints by prefixing the fractional width with the namespace you gave to the media-query. `<div class="col-3/4 lg-2/3 md-3/5 sm-1/2 xs-1/1">`.
+You can then manipulate the widths of columns across all five breakpoints by prefixing the fractional width with the namespace you gave to the media-query. `<div class="grid__col 3/4 lg-2/3 md-3/5 sm-1/2 xs-1/1">`.
 
 And depending on your defined widths and names, this will behave something like:
 ```css
-/* The \ escape character is only required in the CSS, 
-	you don't need to use it in your HTML */
-	
-.col-3\/4 {
+/* The [~=] attribute selector is used so we don't have to 
+	escape the fraction slash in the CSS */
+[class~='3/4'] {
   width: 75%;
 }
 @media (max-width: 1024px) {
-  .lg-2\/3 {
+  [class~='lg-2/3'] {
     width: 66.6666%; 
   }
 }
 @media (max-width: 800px) {
-  .md-3\/5 {
+  [class~='md-3/5'] {
     width: 60%; 
   }
 }
 @media (max-width: 640px) {
-  .sm-1\/2 {
+  [class~='sm-1/2'] {
     width: 50%; 
   }
 }
@@ -183,15 +182,15 @@ And depending on your defined widths and names, this will behave something like:
 
 You can do some pretty powerful stuff with columns and media queries. This is a snippet taken from the [demo](http://quagliero.github.io/matryosass), specifically the light pink row. 
 ```html
-<div class="col-1/10 xl-1/12 lg-1/2 md-1/3 sm-1/2">
+<div class="grid__col 1/10 xl-1/12 lg-1/2 md-1/3 sm-1/2">
 	<div class="demo-block"></div>
 </div>
 <!-- only show these on biig screens,
 	kinda like firebox.com end menu items -->
-<div class="col-1/12 lg-hide">
+<div class="grid__col 1/12 lg-hide">
 	<div class="demo-block"></div>
 </div>
-<div class="col-1/12 lg-hide">
+<div class="grid__col 1/12 lg-hide">
 	<div class="demo-block"></div>
 </div>
 ```
