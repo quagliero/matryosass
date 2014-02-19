@@ -27,6 +27,7 @@ a {
 
   img {
     outline: 0;
+    border: 0;
   }
 }
 
@@ -64,7 +65,7 @@ h1 {
   background-color: $color7;
   color: #fff;
   font-size: 1.7em;
-  
+
   @include media(xl) {
     font-size: 1.85em;
   }
