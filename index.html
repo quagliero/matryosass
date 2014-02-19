@@ -23,27 +23,27 @@
 <section class="strap strap--blurb">
 	<div class="wrapper">
 		<div class="grid">
-			<div class="col-1/4 sm-1/2 xs-1">
+			<div class="grid__col 1/4 sm-1/2 xs-1">
 				<h3>Responsive</h3>
 				<span class="icon">&harr;</span>
 				<p>Percentage based columns with <em>five</em> breakpoints for total control.</p>
 			</div>
-			<div class="col-1/4 sm-1/2 xs-1">
+			<div class="grid__col 1/4 sm-1/2 xs-1">
 				<h3>Nestable</h3>
 				<span class="icon">&#9778;</span>
 				<p>Columns within columns within columns. Ad infinitum.</p>
 			</div>
-			<div class="col-1/4 sm-1/2 xs-1">
+			<div class="grid__col 1/4 sm-1/2 xs-1">
 				<h3>Customisable</h3>
 				<span class="icon">&#10000;</span>
 				<p>Choose your gutters, column count, breakpoints, and namespacing.</p>
 			</div>
-			<div class="col-1/4 sm-1/2 xs-1">
+			<div class="grid__col 1/4 sm-1/2 xs-1">
 				<h3>Fractional</h3>
 				<span class="icon">&frac14;</span>
-				<p>Goodbye <code>span3</code>, hello <code>col-1/4</code>.<br>Write it like you mean it.</p>
+				<p>Goodbye <code>span3</code>, hello <code>grid__col 1/4</code>.<br>Write it like you mean it.</p>
 			</div>
-			<div class="col-1/2 sm-1 clear">
+			<div class="grid__col 1/2 sm-1 clear">
 				<article class="info">
 					<h2 class="info__title">Why Matryo?</h2>
 					<section class="info__content">
@@ -53,12 +53,12 @@
 					</section>
 				</article>
 			</div>
-			<div class="col-1/2 sm-1">
+			<div class="grid__col 1/2 sm-1">
 				<article class="info">
 					<h2 class="info__title">How does it work?</h2>
 					<section class="info__content">
 						<p>Set your grid variables and @import it into your Sass file. Done.</p>
-						<p>You give a column a default width like <code>&lt;div class="col-3/4"&gt;</code>, and then using responsive namespaced modifiers you can change the column's width. So if you wanted that two-thirds column to be one-half on really small screens, you'd use <code>&lt;div class="col-3/4 xs-1/2"&gt;</code>. <em>('xs' - and others - can be renamed to whatever you want!)</em></p>
+						<p>You give a column a default width like <code>&lt;div class="grid__col 3/4"&gt;</code>, and then using responsive namespaced modifiers you can change the column's width. So if you wanted that two-thirds column to be one-half on really small screens, you'd use <code>&lt;div class="grid__col 3/4 xs-1/2"&gt;</code>. <em>('xs' - and others - can be renamed to whatever you want!)</em></p>
 						<p>Check out <a href="https://github.com/quagliero/matryosass/blob/master/README.md">the docs</a> for more detailed examples including reverse grids, nesting grids, flush grids and using the media queries with your other styles.</p>
 					</section>
 				</article>
@@ -71,191 +71,191 @@
 		<div class="grid">
 
 		<!-- eighths -->
-			<div class="col-1/8">
+			<div class="grid__col 1/8">
 				<div class="demo-block"></div>
 			</div>
-			<div class="col-1/8">
+			<div class="grid__col 1/8">
 				<div class="grid">
 					<div class="col">
 						<div class="demo-block"></div>
 					</div>
 				</div>
 			</div>
-			<div class="col-4/8">
-				<div class="grid--rev">
-					<div class="col-1/4 sm-1/2 xs-1">
+			<div class="grid__col 4/8">
+				<div class="grid grid--rev">
+					<div class="grid__col 1/4 sm-1/2 xs-1">
 						<div class="demo-block"></div>
 					</div>
-					<div class="col-1/4 sm-1/2 xs-hide">
+					<div class="grid__col 1/4 sm-1/2 xs-hide">
 						<div class="demo-block"></div>
 					</div>
-					<div class="col-1/4 sm-hide">
+					<div class="grid__col 1/4 sm-hide">
 						<div class="demo-block"></div>
 					</div>
-					<div class="col-1/4 sm-hide">
+					<div class="grid__col 1/4 sm-hide">
 						<div class="demo-block"></div>
 					</div>
 				</div>
 			</div>
-			<div class="col-1/8">
+			<div class="grid__col 1/8">
 				<div class="grid">
 					<div class="col">
 						<div class="demo-block"></div>
 					</div>
 				</div>
 			</div>
-			<div class="col-1/8">
+			<div class="grid__col 1/8">
 				<div class="demo-block"></div>
 			</div>
 
 		<!-- sevenths -->
-			<div class="col-1/7">
+			<div class="grid__col 1/7">
 				<div class="demo-block"></div>
 			</div>
-			<div class="col-1/7">
+			<div class="grid__col 1/7">
 				<div class="grid">
 					<div class="col">
 						<div class="demo-block"></div>
 					</div>
 				</div>
 			</div>
-			<div class="col-3/7">
-				<div class="grid--rev">
-					<div class="col-1/3 xs-1">
+			<div class="grid__col 3/7">
+				<div class="grid grid--rev">
+					<div class="grid__col 1/3 xs-1">
 						<div class="demo-block"></div>
 					</div>
-					<div class="col-1/3 xs-hide">
+					<div class="grid__col 1/3 xs-hide">
 						<div class="demo-block"></div>
 					</div>
-					<div class="col-1/3 xs-hide">
+					<div class="grid__col 1/3 xs-hide">
 						<div class="demo-block"></div>
 					</div>
 				</div>
 			</div>
 
-			<div class="col-1/7">
+			<div class="grid__col 1/7">
 				<div class="grid">
 					<div class="col">
 						<div class="demo-block"></div>
 					</div>
 				</div>
 			</div>
-			<div class="col-1/7">
+			<div class="grid__col 1/7">
 				<div class="demo-block"></div>
 			</div>
 
 		<!-- sixths -->
-			<div class="col-1/6">
+			<div class="grid__col 1/6">
 				<div class="demo-block"></div>
 			</div>
-			<div class="col-1/6">
+			<div class="grid__col 1/6">
 				<div class="grid">
 					<div class="col">
 						<div class="demo-block"></div>
 					</div>
 				</div>
 			</div>
-			<div class="col-2/6">
-				<div class="grid--rev">
-					<div class="col-1/2 xs-1">
+			<div class="grid__col 2/6">
+				<div class="grid grid--rev">
+					<div class="grid__col 1/2 xs-1">
 						<div class="demo-block"></div>
 					</div>
-					<div class="col-1/2 xs-hide">
+					<div class="grid__col 1/2 xs-hide">
 						<div class="demo-block"></div>
 					</div>
 				</div>
 			</div>
-			<div class="col-1/6">
+			<div class="grid__col 1/6">
 				<div class="grid">
 					<div class="col">
 						<div class="demo-block"></div>
 					</div>
 				</div>
 			</div>
-			<div class="col-1/6">
+			<div class="grid__col 1/6">
 				<div class="demo-block"></div>
 			</div>
 
 
 		<!-- fifths -->
-			<div class="col-1/5">
+			<div class="grid__col 1/5">
 				<div class="demo-block"></div>
 			</div>
-			<div class="col-1/5">
+			<div class="grid__col 1/5">
 				<div class="grid">
 					<div class="col">
 						<div class="demo-block"></div>
 					</div>
 				</div>
 			</div>
-			<div class="col-1/5">
+			<div class="grid__col 1/5">
 				<div class="grid--rev">
 					<div class="col">
 						<div class="demo-block"></div>
 					</div>
 				</div>
 			</div>
-			<div class="col-1/5">
+			<div class="grid__col 1/5">
 				<div class="grid">
 					<div class="col">
 						<div class="demo-block"></div>
 					</div>
 				</div>
 			</div>
-			<div class="col-1/5">
+			<div class="grid__col 1/5">
 				<div class="demo-block"></div>
 			</div>
 
 		<!-- quarters -->
-			<div class="col-1/4">
+			<div class="grid__col 1/4">
 				<div class="demo-block"></div>
 			</div>
-			<div class="col-1/4 xs-1/2">
+			<div class="grid__col 1/4 xs-1/2">
 				<div class="grid">
 					<div class="col">
 						<div class="demo-block"></div>
 					</div>
 				</div>
 			</div>
-			<div class="col-1/4 xs-hide">
+			<div class="grid__col 1/4 xs-hide">
 				<div class="grid">
 					<div class="col">
 						<div class="demo-block"></div>
 					</div>
 				</div>
 			</div>
-			<div class="col-1/4">
+			<div class="grid__col 1/4">
 				<div class="demo-block"></div>
 			</div>
 
 		<!-- thirds -->
-			<div class="col-1/3">
+			<div class="grid__col 1/3">
 				<div class="demo-block"></div>
 			</div>
-			<div class="col-1/3">
+			<div class="grid__col 1/3">
 				<div class="grid">
 					<div class="col">
 						<div class="demo-block"></div>
 					</div>
 				</div>
 			</div>
-			<div class="col-1/3">
+			<div class="grid__col 1/3">
 				<div class="demo-block"></div>
 			</div>
 
 			<!-- flush grid -->
 			<div class="col">
 				<div class="grid--flush">
-					<div class="col-1/4 md-1/3">
+					<div class="grid__col 1/4 md-1/3">
 						<div class="demo-block"></div>
 					</div>
-					<div class="col-1/4 md-2/3">
+					<div class="grid__col 1/4 md-2/3">
 						<div class="demo-block"></div>
 					</div>
-					<div class="col-1/4 md-2/3">
+					<div class="grid__col 1/4 md-2/3">
 						<div class="demo-block"></div>
 					</div>
-					<div class="col-1/4 md-1/3">
+					<div class="grid__col 1/4 md-1/3">
 						<div class="demo-block"></div>
 					</div>
 				</div>
@@ -263,42 +263,42 @@
 
 			<!-- tenths and a bit of a responsive whoopa-->
 			<div class="doll-demo clear">
-				<div class="col-1/10 xl-1/12 lg-1/8 md-1/4 sm-1/2 xs-1">
+				<div class="grid__col 1/10 xl-1/12 lg-1/8 md-1/4 sm-1/2 xs-1">
 					<div class="demo-block"></div>
 				</div>
-				<div class="col-1/10 xl-1/12 lg-1/8 md-1/4 sm-1/2">
+				<div class="grid__col 1/10 xl-1/12 lg-1/8 md-1/4 sm-1/2">
 					<div class="demo-block"></div>
 				</div>
-				<div class="col-1/10 xl-1/12 lg-1/8 md-1/4 sm-1/2">
+				<div class="grid__col 1/10 xl-1/12 lg-1/8 md-1/4 sm-1/2">
 					<div class="demo-block"></div>
 				</div>
-				<div class="col-1/10 xl-1/12 lg-1/8 md-1/4 sm-1/2 xs-1">
+				<div class="grid__col 1/10 xl-1/12 lg-1/8 md-1/4 sm-1/2 xs-1">
 					<div class="demo-block"></div>
 				</div>
-				<div class="col-1/10 xl-1/12 lg-1/8 md-1/3 sm-1/2 xs-1">
+				<div class="grid__col 1/10 xl-1/12 lg-1/8 md-1/3 sm-1/2 xs-1">
 					<div class="demo-block"></div>
 				</div>
-				<div class="col-1/10 xl-1/12 lg-1/8 md-1/3 sm-1/2 xs-1/3">
+				<div class="grid__col 1/10 xl-1/12 lg-1/8 md-1/3 sm-1/2 xs-1/3">
 					<div class="demo-block"></div>
 				</div>
-				<div class="col-1/10 xl-1/12 lg-1/8 md-1/3 sm-1/2 xs-1/3">
+				<div class="grid__col 1/10 xl-1/12 lg-1/8 md-1/3 sm-1/2 xs-1/3">
 					<div class="demo-block"></div>
 				</div>
-				<div class="col-1/10 xl-1/12 lg-1/8 md-1/3 sm-1/2 xs-1/3">
+				<div class="grid__col 1/10 xl-1/12 lg-1/8 md-1/3 sm-1/2 xs-1/3">
 					<div class="demo-block"></div>
 				</div>
-				<div class="col-1/10 xl-1/12 lg-1/2 md-1/3 sm-1/2">
+				<div class="grid__col 1/10 xl-1/12 lg-1/2 md-1/3 sm-1/2">
 					<div class="demo-block"></div>
 				</div>
-				<div class="col-1/10 xl-1/12 lg-1/2 md-1/3 sm-1/2">
+				<div class="grid__col 1/10 xl-1/12 lg-1/2 md-1/3 sm-1/2">
 					<div class="demo-block"></div>
 				</div>
 				<!-- only show these on biig screens,
 					kinda like firebox end menu items -->
-				<div class="col-1/12 lg-hide">
+				<div class="grid__col 1/12 lg-hide">
 					<div class="demo-block"></div>
 				</div>
-				<div class="col-1/12 lg-hide">
+				<div class="grid__col 1/12 lg-hide">
 					<div class="demo-block"></div>
 				</div>
 			</div>

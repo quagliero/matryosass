@@ -109,10 +109,10 @@ $matryo-bp-xl-name    : 'xl' !default;
      * Columns always have one .col or .col- class
      * so give them a base style
      */
-     .col,
-     [class*='col-'] {
+     .grid__col {
         float: left;
         min-height: 1px; /* prevent collapsing columns */
+        width: 100%;
         padding-left: $matryo-gutter;
         @if $matryo-border-box {
             -webkit-box-sizing: border-box;
@@ -122,16 +122,12 @@ $matryo-bp-xl-name    : 'xl' !default;
         }
     }
 
-    .col {
-        width: 100%; /* default 100% width item */
-    }
-
     /*
      * Go get our column widths
-     * and build our base grid with .col- prefix
+     * and build our base grid fraction classes with no prefix
      */
 
-    @include _cols('col');
+    @include _cols(null);
 
         /*
          * Let's get busy break-pointin' and create
@@ -175,6 +171,10 @@ $matryo-bp-xl-name    : 'xl' !default;
  */
 @mixin _cols($namespace) {
 
+    @if $namespace {
+        $namespace : $namespace + '-';
+    }
+
     // Check for a list of cols
     @if type-of($matryo-fractions) == list {
         @each $i in $matryo-fractions {
@@ -206,17 +206,17 @@ $matryo-bp-xl-name    : 'xl' !default;
 
 /*
  * Set fractional based names for namespaced columns
- * .col-1/2, .xs-3/8, .md-1, .lg-4/5
+ * .1/2, .xs-3/8, .md-1, .lg-4/5
  *
  */
 @mixin _col-classes($namespace, $j, $i) {
     @if $i != $j {
-        .#{$namespace}-#{$j}\/#{$i} {
+        [class~='#{$namespace}#{$j}/#{$i}'] {
             width: percentage($j / $i);
         }
     }
-    @elseif $i == 1 {
-        .#{$namespace}-#{$j} {
+    @elseif $i == 1 and $namespace  {
+        .#{$namespace}#{$j} {
             width: 100%;
         }
     }
@@ -226,7 +226,6 @@ $matryo-bp-xl-name    : 'xl' !default;
  * Build our grid, yo
  */
 @include _grid();
-
 
 
 
