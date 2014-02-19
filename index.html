@@ -4,9 +4,13 @@
 	<title>Matryo. A responsive, nestable, customisable Sass layout system</title>
 	<link rel="stylesheet" href="style.min.css">
 	<meta name="viewport" content="width=device-width">
+	<!--[if lt IE 9]>
+	<script src="ie8/html5shiv.js"></script>
+	<script src="ie8/respond.min.js"></script>
+	<![endif]-->
 </head>
 <body>
-<section class="strap strap--head">
+<header class="strap strap--head">
 	<div class="wrapper">
 		<div class="logo"></div>
 		<div class="logo-title">
@@ -19,7 +23,7 @@
 			<a href="https://github.com/quagliero/matryosass/blob/master/README.md" class="btn btn--docs">Docs</a>
 		</div>
 	</div>
-</section>
+</header>
 <section class="strap strap--blurb">
 	<div class="wrapper">
 		<div class="grid">
@@ -304,9 +308,9 @@
 			</div>
 
 			<div class="col">
-				<div class="author">
+				<footer class="author">
 					<a href="https://twitter.com/quagliero"><img src="http://quagliero.github.io/assets/img/logo.png" alt="quagliero" class="author__img"></a>
-				</div>
+				</footer>
 				<div class="fork-star">
 					<iframe src="http://ghbtns.com/github-btn.html?user=quagliero&repo=matryosass&type=watch&count=true" height="20" width="80" frameborder="0" scrolling="0" style="width:80px; height: 20px;" allowTransparency="true"></iframe>
 					<iframe src="http://ghbtns.com/github-btn.html?user=quagliero&repo=matryosass&type=fork&count=true" height="20" width="80" frameborder="0" scrolling="0" style="width:80px; height: 20px;" allowTransparency="true"></iframe>
