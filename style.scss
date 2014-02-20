@@ -239,6 +239,9 @@ h1 {
         }
     }
     .grid--flush {
+        .demo-block {
+          background: darken($color1, 20%);
+        }
         > div:nth-child(odd) {
           .demo-block {
               background: $color5;
