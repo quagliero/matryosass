@@ -27,7 +27,7 @@ Since we're converting fractions to percentages I recommend you use the `--preci
 ```scss
 /* Your _vars or _settings .scss file */
 $matryo-fractions  : 12; // this can also be a list, e.g. 1,2,4,8
-$matryo-gutter     : 24px;
+$matryo-gutter     : 30px;
 ```
 ```scss
 /* your main .scss file */
@@ -64,6 +64,20 @@ Matryo uses `box-sizing: border-box` to keep everything in proportion. If you've
 ```scss
 // @bool
 $matryo-border-box: true;
+```
+<hr>
+### $matryo-grid-class
+Matryo uses BEM (Block__Element--Modifier) syntax by default, but you can change this to suit your personal preferences or team code style.
+```scss
+// @string
+$matryo-grid-class: 'grid';
+```
+<hr>
+### $matryo-col-class
+Matryo uses BEM (Block__Element--Modifier) syntax by default, but you can change this to suit your personal preferences or team code style.
+```scss
+// @string
+$matryo-col-class: 'grid__col';
 ```
 <hr>
 ### $matryo-bp-*
