@@ -10,15 +10,20 @@
  */
 
 /*
- * $matryo-gutter       -- the gap between each column
- * $matryo-fractions    -- don't think in columns, think in fractions... how many you want?
- * $matryo-border-box   -- this grid utilises the border-box model
- * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+ *  $matryo-gutter       -- the gap between each column
+ *  $matryo-fractions    -- don't think in columns, think in fractions... how many you want?
+ *  $matryo-border-box   -- this grid utilises the border-box model
+ *          http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+ *  $matryo-grid-class   -- Change the class name for the grid
+ *  $matryo-col-class    -- Change the base class name for a column
  */
 
 $matryo-gutter      : 24px !default;
 $matryo-fractions   : 12 !default;
-$matryo-border-box  : true !default;   /* set to false if you've declared it globally elsewhere */
+$matryo-border-box  : true !default;    /* disable if already defined globally */
+$matryo-grid-class  : 'grid' !default;
+$matryo-col-class   : 'grid__col' !default;
+
 
 /*
  * Define your breakpoints
@@ -61,6 +66,7 @@ $matryo-bp-xl-name    : 'xl' !default;
 
 
 
+
 /*
  * Build our grid with columns and (optional) breakpoints
  */
@@ -70,7 +76,8 @@ $matryo-bp-xl-name    : 'xl' !default;
      * offset the gutter with a negative margin so
      * we don't need to use .last
      */
-    .grid {
+    .#{$matryo-grid-class},
+    %#{$matryo-grid-class} {
         margin-left: -$matryo-gutter;
 
         /* clear .col floats */
@@ -79,37 +86,40 @@ $matryo-bp-xl-name    : 'xl' !default;
             display: table;
             clear: both;
         }
-        /* if you want to nest, or reverse, outside of a .col */
-        > .grid {
+        /* Not commonly used, but covering the case when you
+            might want to nest a grid within a grid (instead of within a column) */
+        > .#{$matryo-grid-class},
+        > .#{$matryo-grid-class}--flush,
+        > .#{$matryo-grid-class}--rev {
             margin-left: 0;
         }
 
     }
 
     /* No gutters, just a whole lot of grid */
-    .grid--flush {
-        @extend .grid;
+    .#{$matryo-grid-class}--flush {
+        @extend %#{$matryo-grid-class};
         margin-left: 0;
 
-        [class*='col-'] {
+        .#{$matryo-col-class} {
             padding-left: 0;
         }
     }
 
     /* Reverse the flow, useful for content ordering */
-    .grid--rev {
-        @extend .grid;
+    .#{$matryo-grid-class}--rev {
+        @extend %#{$matryo-grid-class};
 
-        [class*='col-'] {
+        .#{$matryo-col-class} {
             float: right;
         }
     }
 
     /*
-     * Columns always have one .col or .col- class
+     * Columns always have one base class e.g. .grid__col
      * so give them a base style
      */
-     .grid__col {
+     .#{$matryo-col-class} {
         float: left;
         min-height: 1px; /* prevent collapsing columns */
         width: 100%;
@@ -129,35 +139,35 @@ $matryo-bp-xl-name    : 'xl' !default;
 
     @include _cols(null);
 
-        /*
-         * Let's get busy break-pointin' and create
-         * some suepr awsum namespaced responsive grid widths
-         */
-        @if $matryo-bp-xl {
-            @media (min-width: #{$matryo-bp-xl-width}) {
-                @include _cols($matryo-bp-xl-name);
-            }
+    /*
+     * Let's get busy break-pointin' and create
+     * some suepr awsum namespaced responsive grid widths
+     */
+    @if $matryo-bp-xl {
+        @media (min-width: #{$matryo-bp-xl-width}) {
+            @include _cols($matryo-bp-xl-name);
         }
-        @if $matryo-bp-lg {
-            @media (max-width: #{$matryo-bp-lg-width}) {
-                @include _cols($matryo-bp-lg-name);
-            }
+    }
+    @if $matryo-bp-lg {
+        @media (max-width: #{$matryo-bp-lg-width}) {
+            @include _cols($matryo-bp-lg-name);
         }
-        @if $matryo-bp-md {
-            @media (max-width: #{$matryo-bp-md-width}) {
-                @include _cols($matryo-bp-md-name);
-            }
+    }
+    @if $matryo-bp-md {
+        @media (max-width: #{$matryo-bp-md-width}) {
+            @include _cols($matryo-bp-md-name);
         }
-        @if $matryo-bp-sm {
-            @media (max-width: #{$matryo-bp-sm-width}) {
-                @include _cols($matryo-bp-sm-name);
-            }
+    }
+    @if $matryo-bp-sm {
+        @media (max-width: #{$matryo-bp-sm-width}) {
+            @include _cols($matryo-bp-sm-name);
         }
-        @if $matryo-bp-xs {
-            @media (max-width: #{$matryo-bp-xs-width}) {
-                @include _cols($matryo-bp-xs-name);
-            }
+    }
+    @if $matryo-bp-xs {
+        @media (max-width: #{$matryo-bp-xs-width}) {
+            @include _cols($matryo-bp-xs-name);
         }
+    }
 
 }
 
@@ -184,16 +194,19 @@ $matryo-bp-xl-name    : 'xl' !default;
         }
     }
     // Otherwise treat is as number
-    @else {
+    @elseif unitless($matryo-fractions) {
         @for $i from 1 through $matryo-fractions {
             @for $j from 1 through $i {
                 @include _col-classes($namespace, $j, $i);
             }
         }
     }
+    @else {
+        @warn "$mg-fractions needs to be a unitless number or a list";
+    }
 
     /* a helpful class to hide columns
-     * e.g, .col-hide, .xl-hide, .md-hide
+     * e.g, .hide, .xl-hide, .md-hide
      */
     .#{$namespace}hide {
         visibility: hidden;
@@ -201,16 +214,18 @@ $matryo-bp-xl-name    : 'xl' !default;
         width: 0;
         height: 0;
         padding: 0;
+        margin: 0; /* shouldn't ever be needed, but just in case */
     }
 }
 
 
 /*
- * Set fractional based names for namespaced columns
+ * Set fractional based classes for namespaced columns
  * .1/2, .xs-3/8, .md-1, .lg-4/5
  *
  */
 @mixin _col-classes($namespace, $j, $i) {
+
     @if $i != $j {
         [class~='#{$namespace}#{$j}/#{$i}'] {
             width: percentage($j / $i);
@@ -239,6 +254,7 @@ $matryo-bp-xl-name    : 'xl' !default;
  */
 
 @mixin media($namespace) {
+    
     @if $namespace == $matryo-bp-xl-name {
         @media (min-width: #{$matryo-bp-xl-width}) {
             @content;
