@@ -1,0 +1,23 @@
+{
+    "name": "matryo",
+    "version": "0.1.0",
+    "main": "matryo.scss",
+    "ignore": [
+        "LICENSE",
+        "bower.json",
+        "README.md"
+    ],
+    "homepage": "https://github.com/quagliero/matryosass",
+    "authors": [
+        "Tobias Harison-Denby / @quagliero"
+    ],
+    "description": "A fully customisable, fractional, nestable, responsive layout system",
+    "keywords": [
+        "grid",
+        "responsive",
+        "css",
+        "sass"
+    ],
+    "license": "MIT",
+    "dependencies": {}
+}
