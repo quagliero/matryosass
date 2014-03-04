@@ -19,7 +19,7 @@
  */
 
 $matryo-gutter      : 24px !default;
-$matryo-fractions   : 12 !default;
+$matryo-fractions   : 12 !default;      /* accepts a number or list of numbers */
 $matryo-border-box  : true !default;    /* disable if already defined globally */
 $matryo-grid-class  : 'grid' !default;
 $matryo-col-class   : 'grid__col' !default;
@@ -79,13 +79,8 @@ $matryo-bp-xl-name    : 'xl' !default;
     .#{$matryo-grid-class},
     %#{$matryo-grid-class} {
         margin-left: -$matryo-gutter;
+        letter-spacing: -.3em; /* so our inline-block elements line up */
 
-        /* clear .col floats */
-        &:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
         /* Not commonly used, but covering the case when you
             might want to nest a grid within a grid (instead of within a column) */
         > .#{$matryo-grid-class},
@@ -109,17 +104,16 @@ $matryo-bp-xl-name    : 'xl' !default;
     .#{$matryo-grid-class}--rev {
         @extend %#{$matryo-grid-class};
 
-        .#{$matryo-col-class} {
-            float: right;
-        }
+        text-align: right;
     }
 
     /*
      * Columns always have one base class e.g. .grid__col
      * so give them a base style
      */
-     .#{$matryo-col-class} {
-        float: left;
+    .#{$matryo-col-class} {
+        display: inline-block;
+        letter-spacing: normal;
         min-height: 1px; /* prevent collapsing columns */
         width: 100%;
         padding-left: $matryo-gutter;
@@ -230,7 +224,8 @@ $matryo-bp-xl-name    : 'xl' !default;
             width: percentage($j / $i);
         }
     }
-    @elseif $i == 1 and $namespace  {
+
+    @if $i == 1 and $namespace  {
         .#{$namespace}#{$j} {
             width: 100%;
         }
@@ -253,7 +248,7 @@ $matryo-bp-xl-name    : 'xl' !default;
  */
 
 @mixin media($namespace) {
-    
+
     @if $namespace == $matryo-bp-xl-name {
         @media (min-width: #{$matryo-bp-xl-width}) {
             @content;
