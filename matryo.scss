@@ -95,7 +95,7 @@ $matryo-bp-xl-name    : 'xl' !default;
         @extend %#{$matryo-grid-class};
         margin-left: 0;
 
-        .#{$matryo-col-class} {
+        > .#{$matryo-col-class} {
             padding-left: 0;
         }
     }
@@ -104,16 +104,44 @@ $matryo-bp-xl-name    : 'xl' !default;
     .#{$matryo-grid-class}--rev {
         @extend %#{$matryo-grid-class};
 
-        text-align: right;
+        direction: rtl;
+    }
+
+    /* Everybody get on the floor */
+    .#{$matryo-grid-class}--bottom {
+        @extend %#{$matryo-grid-class};
+
+        > .#{$matryo-col-class} {
+            vertical-align: bottom;
+        }
+    }
+
+    /* Align columns across their horizontal axis  */
+    .#{$matryo-grid-class}--middle {
+        @extend %#{$matryo-grid-class};
+
+        > .#{$matryo-col-class} {
+            vertical-align: middle;
+        }
+    }
+
+    /* Centre align all columns */
+    .#{$matryo-grid-class}--center {
+        @extend %#{$matryo-grid-class};
+
+        text-align: center;
     }
 
     /*
      * Columns always have one base class e.g. .grid__col
      * so give them a base style
      */
-    .#{$matryo-col-class} {
+    .#{$matryo-col-class},
+    %#{$matryo-col-class},{
         display: inline-block;
+        vertical-align: top;
         letter-spacing: normal;
+        direction: ltr;
         min-height: 1px; /* prevent collapsing columns */
         width: 100%;
         padding-left: $matryo-gutter;
@@ -124,6 +152,29 @@ $matryo-bp-xl-name    : 'xl' !default;
             box-sizing: border-box;
         }
     }
+
+    /* Centre align single column */
+    .#{$matryo-col-class}--bottom {
+        @extend %#{$matryo-col-class};
+
+        vertical-align: bottom;
+    }
+
+    /* Horizontally align single column */
+    .#{$matryo-col-class}--middle {
+        @extend %#{$matryo-col-class};
+
+        vertical-align: middle;
+    }
+
+    /* Centre align single column */
+    .#{$matryo-col-class}--center {
+        @extend %#{$matryo-col-class};
+
+        margin: 0 auto;
+    }
+
+
 
     /*
      * Go get our column widths
