@@ -69,7 +69,7 @@
 .grid--middle,
 .grid--center {
   margin-left: -24px;
-  letter-spacing: -.3em;
+  font-size: 0;
   /* so our inline-block elements line up */
   /* Not commonly used, but covering the case when you
       might want to nest a grid within a grid (instead of within a column) */ }
@@ -119,10 +119,9 @@
 .grid__col--center {
   display: inline-block;
   vertical-align: top;
-  letter-spacing: normal;
-  direction: ltr;
-  min-height: 1px;
-  /* prevent collapsing columns */
+  font-size: 16px;
+  /* IE8 fallback */
+  font-size: 1rem;
   width: 100%;
   padding-left: 24px;
   -webkit-box-sizing: border-box;
