@@ -78,7 +78,7 @@ $matryo-bp-xl-name    : 'xl' !default;
     .#{$matryo-grid-class},
     %#{$matryo-grid-class} {
         margin-left: -$matryo-gutter;
-        font-size: 0; /* so our inline-block elements line up */
+        font-size: 0 !important; /* so our inline-block elements line up */
 
         /* Not commonly used, but covering the case when you
             might want to nest a grid within a grid (instead of within a column) */
