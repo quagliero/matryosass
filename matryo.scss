@@ -1,23 +1,23 @@
 /*!*
- *
- * matryosass -- @quagliero
- * Infinitely nestable grids with as many fractional widths as you like
- * Licensed with the 'do whatever you want with it' one.
- */
+*
+* matryosass -- @quagliero
+* Infinitely nestable grids with as many fractional widths as you like
+* Licensed with the 'do whatever you want with it' one.
+*/
 
 /*
- * $VARIABLES
- */
+* $VARIABLES
+*/
 
 /*
- *  [1] $matryo-gutter      -- the gap between each column, e.g. 48px, 2em
- *  [2] $matryo-fractions   -- the fractional widths available for you to use,
- *      pass in a single whole number, e.g 12; or a list: 2,3,4,8,12
- *  [3] $matryo-border-box  -- used to initialise the border-box model on columns,
-        you should set this to false if you've already defined it globally *{...}
- *  [4] $matryo-grid-class  -- the class name for the grid
- *  [5] $matryo-col-class   -- the class name for a column
- */
+*  [1] $matryo-gutter      -- the gap between each column, e.g. 48px, 2em
+*  [2] $matryo-fractions   -- the fractional widths available for you to use,
+*      pass in a single whole number, e.g 12; or a list: 2,3,4,8,12
+*  [3] $matryo-border-box  -- used to initialise the border-box model on columns,
+you should set this to false if you've already defined it globally *{...}
+*  [4] $matryo-grid-class  -- the class name for the grid
+*  [5] $matryo-col-class   -- the class name for a column
+*/
 
 $matryo-gutter      : 24px !default;        /* [1] */
 $matryo-fractions   : 12 !default;          /* [2] */
@@ -27,15 +27,15 @@ $matryo-col-class   : 'grid__col' !default; /* [5] */
 
 
 /*
- * Define your breakpoints
- *
- *  [1] $matryo-bp-{n}          -- enable/disable specific breakpoint
- *  [2] $matryo-bp-{n}-width    -- define a width for a breakpoint. Default uses
- *      ems with 'target ÷ context = result', assuming 16px is the base font size
- *  [3] $matryo-bp-{n}-name     -- give that breakpoint a namespace. Defaults to
- *      bootstrap naming conventions, but these should be whatever works for you,
- *      as suggested in http://css-tricks.com/naming-media-queries/
- */
+* Define your breakpoints
+*
+*  [1] $matryo-bp-{n}          -- enable/disable specific breakpoint
+*  [2] $matryo-bp-{n}-width    -- define a width for a breakpoint. Default uses
+*      ems with 'target / context = result', assuming 16px is the base font size
+*  [3] $matryo-bp-{n}-name     -- give that breakpoint a namespace. Defaults to
+*      bootstrap naming conventions, but these should be whatever works for you,
+*      as suggested in http://css-tricks.com/naming-media-queries/
+*/
 
 $matryo-bp-xs          : true !default; /* [1] */
 $matryo-bp-xs-width    : 30em !default; /* [2] ~480px (480/16) */
@@ -54,36 +54,41 @@ $matryo-bp-lg-width    : 64em !default; /* [2] ~1024px (1024/16) */
 $matryo-bp-lg-name     : 'lg' !default; /* [3] */
 
 /*
- *  [4] This last one is used as a MIN-width media query to target
- *      things greater than your 'large' breakpoint. Defaults to 1px bigger than
- *      the 'large' width. Increase as required.
- */
+*  [4] This last one is used as a MIN-width media query to target
+*      things greater than your 'large' breakpoint. Defaults to 1px bigger than
+*      the 'large' width. Increase as required.
+*/
 
 $matryo-bp-xl         : false !default; /* [1] */
 $matryo-bp-xl-width   : $matryo-bp-lg-width + .00001 !default; /* [4]  */
 $matryo-bp-xl-name    : 'xl' !default; /* [3] */
 
 /*
- * END $VARIABLES
- * You're all done! The whizzbangery happens below...
- */
+* END $VARIABLES
+* You're all done! The whizzbangery happens below...
+*/
 
 
 
 
 /*
- * Build our grid with columns and (optional) breakpoints
- */
+* Build our grid with columns and (optional) breakpoints
+*/
 @mixin _grid() {
     /*
-     * Define the grid to wrap our items in and offset the gutter with a
-     * negative margin so we don't need to use .last or :last-of-type shenanigans
-     */
+    * Define the grid to wrap our items in and offset the gutter with a
+    * negative margin so we don't need to use .last or :last-of-type shenanigans
+    */
     .#{$matryo-grid-class},
     %#{$matryo-grid-class} {
         margin-left: -$matryo-gutter;
-        font-size: 0; /* so our inline-block elements line up */
 
+        /* clear column floats */
+        &:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
         /* Not commonly used, but covering the case when you
             might want to nest a grid within a grid (instead of within a column) */
         > .#{$matryo-grid-class},
@@ -107,43 +112,19 @@ $matryo-bp-xl-name    : 'xl' !default; /* [3] */
     .#{$matryo-grid-class}--rev {
         @extend %#{$matryo-grid-class};
 
-        direction: rtl;
-    }
-
-    /* Everybody get on the floor */
-    .#{$matryo-grid-class}--bottom {
-        @extend %#{$matryo-grid-class};
-
-        > .#{$matryo-col-class} {
-            vertical-align: bottom;
+        .#{$matryo-col-class} {
+            float: right;
         }
-    }
-
-    /* Align columns across their horizontal axis  */
-    .#{$matryo-grid-class}--middle {
-        @extend %#{$matryo-grid-class};
-
-        > .#{$matryo-col-class} {
-            vertical-align: middle;
-        }
-    }
-
-    /* Centre align all columns */
-    .#{$matryo-grid-class}--center {
-        @extend %#{$matryo-grid-class};
-
-        text-align: center;
     }
 
     /*
-     * Base column styles
-     */
+    * Columns always have one base class e.g. .grid__col
+    * so give them a base style
+    */
     .#{$matryo-col-class},
     %#{$matryo-col-class} {
-        display: inline-block;
-        vertical-align: top;
-        font-size: 16px; /* IE8 fallback */
-        font-size: 1rem;
+        float: left;
+        min-height: 1px; /* prevent collapsing columns */
         width: 100%;
         padding-left: $matryo-gutter;
         @if $matryo-border-box {
@@ -153,41 +134,20 @@ $matryo-bp-xl-name    : 'xl' !default; /* [3] */
             box-sizing: border-box;
         }
     }
-
-    /* Centre align single column */
-    .#{$matryo-col-class}--bottom {
-        @extend %#{$matryo-col-class};
-
-        vertical-align: bottom;
-    }
-
-    /* Horizontally align single column */
-    .#{$matryo-col-class}--middle {
-        @extend %#{$matryo-col-class};
-
-        vertical-align: middle;
-    }
-
-    /* Centre align single column */
-    .#{$matryo-col-class}--center {
-        @extend %#{$matryo-col-class};
-
-        margin: 0 auto;
-    }
-
+    
 
 
     /*
-     * Go get our column widths
-     * and build our base grid fraction classes with no prefix
-     */
+    * Go get our column widths
+    * and build our base grid fraction classes with no prefix
+    */
 
     @include _cols(null);
 
     /*
-     * Let's get busy break-pointin' and create
-     * some suepr awsum namespaced responsive grid widths
-     */
+    * Let's get busy break-pointin' and create
+    * some suepr awsum namespaced responsive grid widths
+    */
     @if $matryo-bp-xl {
         @media (min-width: #{$matryo-bp-xl-width}) {
             @include _cols($matryo-bp-xl-name);
@@ -218,12 +178,12 @@ $matryo-bp-xl-name    : 'xl' !default; /* [3] */
 
 
 /*
- * Function to handle the building of columns
- * defined in $matryo-fractions.
- *  via a defined number, e.g. 12 OR
- *  a collection of cols, e.g. 1,2,4,8
- *
- */
+* Function to handle the building of columns
+* defined in $matryo-fractions.
+*  via a defined number, e.g. 12 OR
+*  a collection of cols, e.g. 1,2,4,8
+*
+*/
 @mixin _cols($namespace) {
 
     @if $namespace {
@@ -251,8 +211,8 @@ $matryo-bp-xl-name    : 'xl' !default; /* [3] */
     }
 
     /* a helpful class to hide columns
-     * e.g, .hide, .xl-hide, .md-hide
-     */
+    * e.g, .hide, .xl-hide, .md-hide
+    */
     .#{$namespace}hide {
         visibility: hidden;
         overflow: hidden;
@@ -265,10 +225,10 @@ $matryo-bp-xl-name    : 'xl' !default; /* [3] */
 
 
 /*
- * Set fractional based classes for namespaced columns
- * .1/2, .xs-3/8, .md-1, .lg-4/5
- *
- */
+* Set fractional based classes for namespaced columns
+* [class~='1/2'], .xs-3/8, .md-1, .lg-4/5
+*
+*/
 @mixin _col-classes($namespace, $j, $i) {
 
     @if $i != $j {
@@ -285,8 +245,8 @@ $matryo-bp-xl-name    : 'xl' !default; /* [3] */
 }
 
 /*
- * Build our grid, yo
- */
+* Build our grid, yo
+*/
 @include _grid();
 
 
@@ -294,10 +254,10 @@ $matryo-bp-xl-name    : 'xl' !default; /* [3] */
 /* PUBLIC Matryosass mixin(s) */
 
 /*
- * Let us use our breakpoints for all content...
- * @if/@else if -- Try and match the media-query namespace and assign relevant widths
- * @else        -- so you can use it for custom queries if you wish
- */
+* Let us use our breakpoints for all content...
+* @if/@else if -- Try and match the media-query namespace and assign relevant widths
+* @else        -- so you can use it for custom queries if you wish
+*/
 
 @mixin media($namespace) {
 
