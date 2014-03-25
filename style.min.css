@@ -123,7 +123,11 @@
   /* IE8 fallback */
   font-size: 1rem;
   width: 100%;
-  padding-left: 24px; }
+  padding-left: 24px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box; }
 
 /* Centre align single column */
 .grid__col--bottom {
@@ -1427,13 +1431,6 @@
  * @else        -- so you can use it for custom queries if you wish
  */
 /* Fin. */
-*,
-*:before, *:after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  box-sizing: border-box; }
-
 /* default stuff */
 html, body {
   margin: 0;

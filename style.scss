@@ -8,18 +8,8 @@ $color5: #fe8fbe;
 $color6: #232323;
 $color7: #222;
 
-$matryo-border-box: false;
-
 @import "matryo";
 @import url(http://fonts.googleapis.com/css?family=Raleway:600,300|Pacifico);
-
-*,
-*:before, *:after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  box-sizing: border-box;
-}
 
 /* default stuff */
 html, body {
