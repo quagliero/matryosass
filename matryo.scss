@@ -19,7 +19,7 @@
  */
 
 $matryo-gutter      : 24px !default;
-$matryo-fractions   : 12 !default;      /* accepts a number or list of numbers */
+$matryo-fractions   : 12 !default;
 $matryo-border-box  : true !default;    /* disable if already defined globally */
 $matryo-grid-class  : 'grid' !default;
 $matryo-col-class   : 'grid__col' !default;
@@ -79,11 +79,17 @@ $matryo-bp-xl-name    : 'xl' !default;
     .#{$matryo-grid-class},
     %#{$matryo-grid-class} {
         margin-left: -$matryo-gutter;
-        letter-spacing: -.3em; /* so our inline-block elements line up */
 
+        /* clear .col floats */
+        &:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
         /* Not commonly used, but covering the case when you
             might want to nest a grid within a grid (instead of within a column) */
         > .#{$matryo-grid-class},
+        > .#{$matryo-grid-class}--flush,
         > .#{$matryo-grid-class}--rev {
             margin-left: 0;
         }
@@ -95,7 +101,7 @@ $matryo-bp-xl-name    : 'xl' !default;
         @extend %#{$matryo-grid-class};
         margin-left: 0;
 
-        > .#{$matryo-col-class} {
+        .#{$matryo-col-class} {
             padding-left: 0;
         }
     }
@@ -104,44 +110,17 @@ $matryo-bp-xl-name    : 'xl' !default;
     .#{$matryo-grid-class}--rev {
         @extend %#{$matryo-grid-class};
 
-        direction: rtl;
-    }
-
-    /* Everybody get on the floor */
-    .#{$matryo-grid-class}--bottom {
-        @extend %#{$matryo-grid-class};
-
-        > .#{$matryo-col-class} {
-            vertical-align: bottom;
+        .#{$matryo-col-class} {
+            float: right;
         }
-    }
-
-    /* Align columns across their horizontal axis  */
-    .#{$matryo-grid-class}--middle {
-        @extend %#{$matryo-grid-class};
-
-        > .#{$matryo-col-class} {
-            vertical-align: middle;
-        }
-    }
-
-    /* Centre align all columns */
-    .#{$matryo-grid-class}--center {
-        @extend %#{$matryo-grid-class};
-
-        text-align: center;
     }
 
     /*
      * Columns always have one base class e.g. .grid__col
      * so give them a base style
      */
-    .#{$matryo-col-class},
-    %#{$matryo-col-class},{
-        display: inline-block;
-        vertical-align: top;
-        letter-spacing: normal;
-        direction: ltr;
+     .#{$matryo-col-class} {
+        float: left;
         min-height: 1px; /* prevent collapsing columns */
         width: 100%;
         padding-left: $matryo-gutter;
@@ -152,29 +131,6 @@ $matryo-bp-xl-name    : 'xl' !default;
             box-sizing: border-box;
         }
     }
-
-    /* Centre align single column */
-    .#{$matryo-col-class}--bottom {
-        @extend %#{$matryo-col-class};
-
-        vertical-align: bottom;
-    }
-
-    /* Horizontally align single column */
-    .#{$matryo-col-class}--middle {
-        @extend %#{$matryo-col-class};
-
-        vertical-align: middle;
-    }
-
-    /* Centre align single column */
-    .#{$matryo-col-class}--center {
-        @extend %#{$matryo-col-class};
-
-        margin: 0 auto;
-    }
-
-
 
     /*
      * Go get our column widths
@@ -275,8 +231,7 @@ $matryo-bp-xl-name    : 'xl' !default;
             width: percentage($j / $i);
         }
     }
-
-    @if $i == 1 and $namespace  {
+    @elseif $i == 1 and $namespace  {
         .#{$namespace}#{$j} {
             width: 100%;
         }
@@ -299,7 +254,7 @@ $matryo-bp-xl-name    : 'xl' !default;
  */
 
 @mixin media($namespace) {
-
+    
     @if $namespace == $matryo-bp-xl-name {
         @media (min-width: #{$matryo-bp-xl-width}) {
             @content;
