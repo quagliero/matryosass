@@ -72,8 +72,9 @@ $matryo-bp-xl-name    : 'xl' !default;
  */
 @mixin _grid() {
     /*
-     * Define the grid to wrap our items in and offset the gutter with a
-     * negative margin so we don't need to use .last or :last-of-type shenanigans
+     * Define the .grid to wrap our items in and
+     * offset the gutter with a negative margin so
+     * we don't need to use .last
      */
     .#{$matryo-grid-class},
     %#{$matryo-grid-class} {
@@ -132,7 +133,8 @@ $matryo-bp-xl-name    : 'xl' !default;
     }
 
     /*
-     * Base column styles
+     * Columns always have one base class e.g. .grid__col
+     * so give them a base style
      */
     .#{$matryo-col-class},
     %#{$matryo-col-class} {
