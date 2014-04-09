@@ -103,7 +103,7 @@ $matryo-bp-xl-name    : 'xl' !default; /* [3] */
     .#{$matryo-grid-class}--flush {
         @extend %#{$matryo-grid-class};
         margin-left: 0;
-
+        
         > .#{$matryo-col-class} {
             padding-left: 0;
         }
@@ -113,7 +113,7 @@ $matryo-bp-xl-name    : 'xl' !default; /* [3] */
     .#{$matryo-grid-class}--rev {
         @extend %#{$matryo-grid-class};
 
-        .#{$matryo-col-class} {
+        > .#{$matryo-col-class} {
             float: right;
         }
     }
