@@ -211,17 +211,25 @@ $matryo-bp-xl-name    : 'xl' !default; /* [3] */
         @warn "$mg-fractions needs to be a unitless number or a list";
     }
 
-    /* a helpful class to hide columns
+    /* a helpful class to hide items
     * e.g, .hide, .xl-hide, .md-hide
     */
     .#{$namespace}hide {
         visibility: hidden;
         overflow: hidden;
-        width: 0;
         height: 0;
-        padding: 0;
-        margin: 0; /* shouldn't ever be needed, but just in case */
+        min-height: 0; /* Allows col to collapse */
     }
+    
+    /* a helpful class to show items (requires .hide)
+    * e.g, <div class="hide sm-show">
+    */
+    .#{$namespace}show {
+        visibility: visible;
+        overflow: visible;
+        height: auto;
+    }
+    
 }
 
 
