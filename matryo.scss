@@ -215,19 +215,18 @@ $matryo-bp-xl-name    : 'xl' !default; /* [3] */
     * e.g, .hide, .xl-hide, .md-hide
     */
     .#{$namespace}hide {
-        visibility: hidden;
-        overflow: hidden;
-        height: 0;
-        min-height: 0; /* Allows col to collapse */
+        display: none !important;
     }
     
     /* a helpful class to show items (requires .hide)
     * e.g, <div class="hide sm-show">
     */
     .#{$namespace}show {
-        visibility: visible;
-        overflow: visible;
-        height: auto;
+        display: block !important;
+    }
+    
+    .#{$namespace}show-inline {
+        display: inline-block !important;
     }
     
 }
