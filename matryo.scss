@@ -296,7 +296,7 @@ $matryo-bp-xl-name    : 'xl' !default; /* [3] */
         }
     }
     @else {
-        @media (#{$namespace}) {
+        @media #{$namespace} {
             @content;
         }
     }
