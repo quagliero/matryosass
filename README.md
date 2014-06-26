@@ -238,7 +238,7 @@ If the `media` mixin can't match your argument to one of your defined breakpoint
 ```scss
 .lede {
 ...
-	@include media(min-width: 80em) {
+	@include media('(min-width: 80em)') {
 		font-size: 3em;
 	}
 }
