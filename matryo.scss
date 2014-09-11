@@ -60,7 +60,7 @@ $matryo-bp-lg-name     : 'lg' !default; /* [3] */
 */
 
 $matryo-bp-xl         : false !default; /* [1] */
-$matryo-bp-xl-width   : $matryo-bp-lg-width + .00001 !default; /* [4]  */
+$matryo-bp-xl-width   : $matryo-bp-lg-width + .01 !default; /* [4]  */
 $matryo-bp-xl-name    : 'xl' !default; /* [3] */
 
 
@@ -91,7 +91,7 @@ $matryo-bp-xl-name    : 'xl' !default; /* [3] */
             clear: both;
         }
         /* Not commonly used, but covering the case when you
-            might want to nest a grid within a grid (instead of within a column) */
+        might want to nest a grid within a grid (instead of within a column) */
         > .#{$matryo-grid-class},
         > .#{$matryo-grid-class}--rev {
             margin-left: 0;
@@ -103,7 +103,7 @@ $matryo-bp-xl-name    : 'xl' !default; /* [3] */
     .#{$matryo-grid-class}--flush {
         @extend %#{$matryo-grid-class};
         margin-left: 0;
-        
+
         > .#{$matryo-col-class} {
             padding-left: 0;
         }
@@ -217,18 +217,18 @@ $matryo-bp-xl-name    : 'xl' !default; /* [3] */
     .#{$namespace}hide {
         display: none !important;
     }
-    
+
     /* a helpful class to show items (requires .hide)
     * e.g, <div class="hide sm-show">
     */
     .#{$namespace}show {
         display: block !important;
     }
-    
+
     .#{$namespace}show-inline {
         display: inline-block !important;
     }
-    
+
 }
 
 
@@ -269,31 +269,97 @@ $matryo-bp-xl-name    : 'xl' !default; /* [3] */
 
 @mixin media($namespace) {
 
+    // above your 'xl' width
     @if $namespace == $matryo-bp-xl-name {
         @media (min-width: #{$matryo-bp-xl-width}) {
             @content;
         }
     }
+    // between your 'lg' and 'xl' widths
+    @else if $namespace == '#{$matryo-bp-lg-name}-to-#{$matryo-bp-xl-name}' {
+        @media (max-width: #{$matryo-bp-xl-width}) and (min-width: #{$matryo-bp-lg-width}) {
+            @content;
+        }
+    }
+    // between your 'md' and 'xl' widths
+    @else if $namespace == '#{$matryo-bp-md-name}-to-#{$matryo-bp-xl-name}' {
+        @media (max-width: #{$matryo-bp-xl-width}) and (min-width: #{$matryo-bp-md-width}) {
+            @content;
+        }
+    }
+    // between your 'sm' and 'xl' widths
+    @else if $namespace == '#{$matryo-bp-sm-name}-to-#{$matryo-bp-xl-name}' {
+        @media (max-width: #{$matryo-bp-xl-width}) and (min-width: #{$matryo-bp-sm-width}) {
+            @content;
+        }
+    }
+    // between your 'xs' and 'xl' widths
+    @else if $namespace == '#{$matryo-bp-xs-name}-to-#{$matryo-bp-xl-name}' {
+        @media (max-width: #{$matryo-bp-xl-width}) and (min-width: #{$matryo-bp-xs-width}) {
+            @content;
+        }
+    }
+    // Up to your 'lg' width
     @else if $namespace == $matryo-bp-lg-name {
         @media (max-width: #{$matryo-bp-lg-width}) {
             @content;
         }
     }
+    // between your 'md' and 'lg' widths
+    @else if $namespace == '#{$matryo-bp-md-name}-to-#{$matryo-bp-lg-name}' {
+        @media (max-width: #{$matryo-bp-lg-width}) and (min-width: #{$matryo-bp-md-width}) {
+            @content;
+        }
+    }
+    // between your 'sm' and 'lg' widths
+    @else if $namespace == '#{$matryo-bp-sm-name}-to-#{$matryo-bp-lg-name}' {
+        @media (max-width: #{$matryo-bp-lg-width}) and (min-width: #{$matryo-bp-sm-width}) {
+            @content;
+        }
+    }
+    // between your 'xs' and 'lg' widths
+    @else if $namespace == '#{$matryo-bp-xs-name}-to-#{$matryo-bp-lg-name}' {
+        @media (max-width: #{$matryo-bp-lg-width}) and (min-width: #{$matryo-bp-xs-width}) {
+            @content;
+        }
+    }
+    // Up to your 'md' width
     @else if $namespace == $matryo-bp-md-name {
         @media (max-width: #{$matryo-bp-md-width}) {
             @content;
         }
     }
+    // between your 'sm' and 'md' widths
+    @else if $namespace == '#{$matryo-bp-sm-name}-to-#{$matryo-bp-md-name}' {
+        @media (max-width: #{$matryo-bp-md-width}) and (min-width: #{$matryo-bp-sm-width}) {
+            @content;
+        }
+    }
+    // between your 'xs' and 'md' widths
+    @else if $namespace == '#{$matryo-bp-xs-name}-to-#{$matryo-bp-md-name}' {
+        @media (max-width: #{$matryo-bp-md-width}) and (min-width: #{$matryo-bp-xs-width}) {
+            @content;
+        }
+    }
+    // Up to your 'sm' width
     @else if $namespace == $matryo-bp-sm-name {
         @media (max-width: #{$matryo-bp-sm-width}) {
             @content;
         }
     }
+    // between your 'xs' and 'sm' widths
+    @else if '$namespace == #{$matryo-bp-xs-name}-to-#{$matryo-bp-md-name}' {
+        @media (max-width: #{$matryo-bp-sm-width}) and (min-width: #{$matryo-bp-xs-width}) {
+            @content;
+        }
+    }
+    // Up to your 'xs' width
     @else if $namespace == $matryo-bp-xs-name {
         @media (max-width: #{$matryo-bp-xs-width}) {
             @content;
         }
     }
+    // Whatever else you may want, it's custom!
     @else {
         @media #{$namespace} {
             @content;

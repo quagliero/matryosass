@@ -6,9 +6,9 @@ MatryoSass can be as scaled back or as expressive as you need it to be; Static t
 
 You tell it how many columns you want, how big of a gutter, and what breakpoints - if any - you need.  
 
-Matryo works in fractions; no more using 'sixcol', 'span6, or 'col-6' when you just mean one half. The idea being you give a column a default width value, and then use your custom named media queries to act as width modifiers. 
+Matryo works in fractions; no more using 'sixcol', 'span6, or 'col-6' when you just mean one half. The idea being you give a column a default width value, and then use your custom named media queries to act as width modifiers.
 
-So if you wanted a three quarter width column you'd use `<div class="grid__col 3/4">` and then if you wanted that to go down to 50% for medium screens and full width for very small screens, you'd use `<div class="grid__col 3/4 md-1/2 xs-1">`.   
+So if you wanted a three quarter width column you'd use `<div class="grid__col 3/4">` and then if you wanted that to go down to 50% for medium screens and full width for very small screens, you'd use `<div class="grid__col 3/4 md-1/2 xs-1">`.
 
 
 ## Demo
@@ -97,7 +97,7 @@ Aptly named: define the width for the breakpoint.
 $matryo-bp-xs-width    : 30em; /* ~480px */
 ```
 #### $matryo-bp-_n_-name
-These will be the names you prefix to your column with modifiers, and also when you use the `@include media` mixin. By default these are named `xs`,`sm`,`md`,`lg`,`xl` for those familiar with Bootstrap - though I urge you to use naming conventions that work for __you__. 
+These will be the names you prefix to your column with modifiers, and also when you use the `@include media` mixin. By default these are named `xs`,`sm`,`md`,`lg`,`xl` for those familiar with Bootstrap - though I urge you to use naming conventions that work for __you__.
 ```scss
 // @string
 $matryo-bp-xs-name     : 'xs';
@@ -105,7 +105,7 @@ $matryo-bp-xs-name     : 'xs';
 
 ## Grids: nesting, --rev, --flush
 
-To start with you'll need to wrap your grid in a class of `.grid`, this has a negative left margin (the same width as the column gutter) so you don't need to worry about any `.last` or `:last-of-type` shenanigans. 
+To start with you'll need to wrap your grid in a class of `.grid`, this has a negative left margin (the same width as the column gutter) so you don't need to worry about any `.last` or `:last-of-type` shenanigans.
 
 It is imperative you do not add any margins, widths or padding to the `.col` items themselves. They form the structure of your site, and you add content within them. To paraphrase Harry Roberts, "the grid and it's columns are the shelves on which you place your things."
 
@@ -139,7 +139,7 @@ So what if we want a block of modules underneath the blog post, but within the s
 ...
   <div class="grid__col 3/5">
      <!-- blog post -->
-     
+
      <div class="grid">
       <!-- modules -->
       <div class="grid__col 1/3">
@@ -159,42 +159,42 @@ So what if we want a block of modules underneath the blog post, but within the s
 But what if we don't want the modules to have any space between them? We make things flush. Using `.grid--flush` instead of `.grid` removes all spacing between `.grid__col`s.
 
 ## Cols: widths, media-queries, -hide
-All grid columns require the `col-` class as this gives it the default styles it needs to behave like a column. We then suffix it with its default width, e.g. `<div class="grid__col 1/3">`. 
+All grid columns require the `grid__col` class as this gives it the default styles it needs to behave like a column. We then suffix it with its default width, e.g. `<div class="grid__col 1/3">`.
 
-You can then manipulate the widths of columns across all five breakpoints by prefixing the fractional width with the namespace you gave to the media-query. `<div class="grid__col 3/4 lg-2/3 md-3/5 sm-1/2 xs-1/1">`.
+You can then manipulate the widths of columns across all breakpoints by prefixing the fractional width with the namespace you gave to the media-query. `<div class="grid__col 3/4 lg-2/3 md-3/5 sm-1/2 xs-1/1">`.
 
 And depending on your defined widths and names, this will behave something like:
 ```css
-/* The [~=] attribute selector is used so we don't have to 
+/* The [~=] attribute selector is used so we don't have to
 	escape the fraction slash in the CSS */
 [class~='3/4'] {
   width: 75%;
 }
 @media (max-width: 1024px) {
   [class~='lg-2/3'] {
-    width: 66.6666%; 
+    width: 66.6666%;
   }
 }
 @media (max-width: 800px) {
   [class~='md-3/5'] {
-    width: 60%; 
+    width: 60%;
   }
 }
 @media (max-width: 640px) {
   [class~='sm-1/2'] {
-    width: 50%; 
+    width: 50%;
   }
 }
 @media (max-width: 640px) {
   .xs-1 {
-    width: 100%; 
+    width: 100%;
   }
 }
 
 ```
 
 
-You can do some pretty powerful stuff with columns and media queries. This is a snippet taken from the [demo](http://quagliero.github.io/matryosass), specifically the light pink row. 
+You can do some pretty powerful stuff with columns and media queries. This is a snippet taken from the [demo](http://quagliero.github.io/matryosass), specifically the light pink row.
 ```html
 <div class="grid__col 1/10 xl-1/12 lg-1/2 md-1/3 sm-1/2">
 	<div class="demo-block"></div>
@@ -208,7 +208,7 @@ You can do some pretty powerful stuff with columns and media queries. This is a 
 	<div class="demo-block"></div>
 </div>
 ```
-We set the width of the last two items to one-twelfth, and hide them on our `lg` breakpoint (the largest max-width one we set). So as soon we go past this point these are now visible. Anything past our `lg` breakpoint is in our `xl` media-query territory, where you'll see the columns above are set to `.xl-1/12`. This allows you to create layouts that show and hide columns across the whole range of breakpoints! 
+We set the width of the last two items to one-twelfth, and hide them on our `lg` breakpoint (the largest max-width one we set). So as soon we go past this point these are now visible. Anything past our `lg` breakpoint is in our `xl` media-query territory, where you'll see the columns above are set to `.xl-1/12`. This allows you to create layouts that show and hide columns across the whole range of breakpoints!
 
 ## Using your media queries for content
 So you've now got total control of your grid layout with your fractional widths and your custom namespaced modifiers - but what if you want to style content differently at these breakpoints as well? Layout and content changes tend to go hand in hand. This is where the `@include media()` mixin comes in to play.
@@ -218,7 +218,7 @@ The `media` mixin takes one argument, `$namespace`, which it will try to match a
 ```scss
 .lede {
 	font-size: 2em;
-	
+
 	@include media(xl) {
 		font-size: 2.2em;
 	}
@@ -233,6 +233,21 @@ The `media` mixin takes one argument, `$namespace`, which it will try to match a
 	}
 }
 ```
+
+_Update_: You can now use 'between' media queries to target between your breakpoints, like:
+```scss
+.lede {
+    font-size: 2em;
+
+    @include media(md-to-xl) {
+        font-size: 1.6rem;
+    }
+    // any of the media query combos are available using the 'to' keyword,
+    // the smaller value must be on the left
+    // e.g. xs-to-lg, md-to-lg, sm-to-xl
+}
+```
+
 If the `media` mixin can't match your argument to one of your defined breakpoints, it will trigger the `@else` case, which is a wildcard. So you can pass through whatever you want to make a custom media query.
 
 ```scss
@@ -248,4 +263,3 @@ If you can improve Matryo (and that includes the documentation!), amazing, send 
 
 ## In the wild
 I'd love to hear if you use Matryo in any of your projects. Happy nesting.
- 
