@@ -348,7 +348,7 @@ $matryo-bp-xl-name    : 'xl' !default; /* [3] */
         }
     }
     // between your 'xs' and 'sm' widths
-    @else if '$namespace == #{$matryo-bp-xs-name}-to-#{$matryo-bp-md-name}' {
+    @else if $namespace == '#{$matryo-bp-xs-name}-to-#{$matryo-bp-md-name}' {
         @media (max-width: #{$matryo-bp-sm-width}) and (min-width: #{$matryo-bp-xs-width}) {
             @content;
         }
@@ -366,6 +366,5 @@ $matryo-bp-xl-name    : 'xl' !default; /* [3] */
         }
     }
 }
-
 
 /* Fin. */
